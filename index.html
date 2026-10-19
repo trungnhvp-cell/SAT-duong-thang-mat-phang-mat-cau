@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SAT Math — Lines, Planes & Spheres in Space | Thầy Nguyễn Hữu Trung</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}]});"></script>
+<style>
+  :root{--sat-blue:#1B3A6B;--sat-blue-light:#2C5AA0;--sat-blue-pale:#EAF0F9;--sat-green:#4CAF50;--sat-red:#E53935;--sat-yellow:#F5B400;--sat-bg:#F5F7FA;--sat-text:#1a2332;--sat-gray:#5b6778;--sat-gold:#F5B400;--shadow:0 2px 8px rgba(27,58,107,.08);--shadow-lg:0 6px 24px rgba(27,58,107,.14)}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Inter','Segoe UI',Roboto,-apple-system,sans-serif;background:var(--sat-bg);color:var(--sat-text);line-height:1.6}
+  header{background:linear-gradient(135deg,var(--sat-blue) 0%,var(--sat-blue-light) 100%);color:#fff;padding:20px 32px;box-shadow:var(--shadow-lg);position:sticky;top:0;z-index:100}
+  .header-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+  .brand{display:flex;align-items:center;gap:14px}
+  .brand-logo{width:44px;height:44px;border-radius:10px;background:#fff;color:var(--sat-blue);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px;letter-spacing:-1px}
+  .brand-title{font-size:20px;font-weight:700}
+  .brand-sub{font-size:12.5px;opacity:.85;font-weight:400}
+  .header-credit{font-size:12.5px;text-align:right;line-height:1.5;background:rgba(255,255,255,.12);padding:8px 16px;border-radius:10px;border-left:3px solid var(--sat-gold)}
+  .header-credit strong{color:var(--sat-gold);font-weight:800}
+  nav{background:#fff;border-bottom:1px solid #e2e8f0;position:sticky;top:84px;z-index:99;overflow-x:auto}
+  .nav-inner{max-width:1200px;margin:0 auto;display:flex;padding:0 16px;gap:4px}
+  .nav-btn{background:none;border:none;padding:16px 20px;font-family:inherit;font-size:14.5px;font-weight:600;color:var(--sat-gray);cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap;transition:all .2s}
+  .nav-btn:hover{color:var(--sat-blue);background:var(--sat-blue-pale)}
+  .nav-btn.active{color:var(--sat-blue);border-bottom-color:var(--sat-blue);background:var(--sat-blue-pale)}
+  main{max-width:1200px;margin:0 auto;padding:32px 20px 80px}
+  .section{display:none;animation:fade .35s ease}
+  .section.active{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  .page-title{font-size:28px;font-weight:800;color:var(--sat-blue);margin-bottom:6px}
+  .page-subtitle{color:var(--sat-gray);margin-bottom:28px;font-size:15px}
+  .card{background:#fff;border-radius:14px;padding:26px 28px;box-shadow:var(--shadow);margin-bottom:20px;border:1px solid #eef2f8}
+  .card h3{font-size:20px;color:var(--sat-blue);margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid var(--sat-blue-pale);display:flex;align-items:center;gap:10px}
+  .card h3 .num{background:var(--sat-blue);color:#fff;width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700}
+  .card h4{font-size:16px;color:var(--sat-blue-light);margin:16px 0 8px}
+  .card p,.card li{margin-bottom:8px}
+  .card ul,.card ol{padding-left:24px}
+  .card ol li,.card ul li{margin-bottom:6px}
+  table{width:100%;border-collapse:collapse;margin:12px 0;font-size:14.5px}
+  th,td{padding:12px 14px;text-align:left;border-bottom:1px solid #eef2f8;vertical-align:top}
+  th{background:var(--sat-blue-pale);color:var(--sat-blue);font-weight:700;font-size:13.5px;text-transform:uppercase;letter-spacing:.5px}
+  tr:hover td{background:#fafcff}
+  .formula-box{background:linear-gradient(135deg,#f0f5ff 0%,#e6efff 100%);border-left:4px solid var(--sat-blue);border-radius:10px;padding:14px 18px;margin:12px 0;font-size:15.5px}
+  .formula-box strong{color:var(--sat-blue);font-weight:800}
+  .vocab-search{width:100%;padding:12px 16px;border:2px solid #e2e8f0;border-radius:10px;font-family:inherit;font-size:15px;margin-bottom:16px}
+  .vocab-search:focus{outline:none;border-color:var(--sat-blue-light)}
+  .vocab-table td:nth-child(2){font-family:'Courier New',monospace;color:var(--sat-blue);font-weight:600}
+  .speak-btn{background:none;border:none;cursor:pointer;color:var(--sat-blue);padding:4px 8px;border-radius:6px;transition:background .2s;font-size:15px}
+  .speak-btn:hover{background:var(--sat-blue-pale)}
+  .group-tabs{display:flex;gap:8px;margin-bottom:24px;flex-wrap:wrap}
+  .group-tab{padding:12px 22px;border-radius:10px;border:2px solid #e2e8f0;background:#fff;font-family:inherit;font-size:14px;font-weight:700;cursor:pointer;color:var(--sat-gray);transition:all .2s}
+  .group-tab:hover{border-color:var(--sat-blue-light)}
+  .group-tab.active{background:var(--sat-blue);color:#fff;border-color:var(--sat-blue)}
+  .group-tab .badge{display:inline-block;margin-left:6px;background:rgba(255,255,255,.25);padding:1px 8px;border-radius:8px;font-size:12px}
+  .group-tab:not(.active) .badge{background:var(--sat-blue-pale);color:var(--sat-blue)}
+  .group-panel{display:none}
+  .group-panel.active{display:block}
+  .q-card{background:#fff;border-radius:14px;padding:24px 26px;box-shadow:var(--shadow);margin-bottom:18px;border-left:5px solid var(--sat-blue-light);transition:border-color .3s}
+  .q-card.correct{border-left-color:var(--sat-green)}
+  .q-card.wrong{border-left-color:var(--sat-red)}
+  .q-head{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+  .q-num{background:var(--sat-blue);color:#fff;min-width:38px;height:38px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;flex-shrink:0}
+  .q-card.correct .q-num{background:var(--sat-green)}
+  .q-card.wrong .q-num{background:var(--sat-red)}
+  .q-text{font-size:16px;font-weight:500;flex:1}
+  .options{display:grid;gap:10px;margin-top:16px}
+  .option{display:flex;align-items:flex-start;gap:12px;padding:14px 18px;border:2px solid #e2e8f0;border-radius:10px;background:#fff;cursor:pointer;transition:all .18s;font-family:inherit;font-size:15px;text-align:left;color:var(--sat-text);width:100%}
+  .option:hover:not(.disabled){border-color:var(--sat-blue-light);background:#fafcff;transform:translateX(2px)}
+  .option .letter{background:var(--sat-blue-pale);color:var(--sat-blue);width:28px;height:28px;border-radius:7px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  .option.correct{border-color:var(--sat-green);background:#eaf7eb}
+  .option.correct .letter{background:var(--sat-green);color:#fff}
+  .option.wrong{border-color:var(--sat-red);background:#fdeaea}
+  .option.wrong .letter{background:var(--sat-red);color:#fff}
+  .option.disabled{cursor:default}
+  .option.disabled:hover{transform:none;background:inherit}
+  .option.selected{border-color:var(--sat-blue);background:#eaf0f9}
+  .option.selected .letter{background:var(--sat-blue);color:#fff}
+  .feedback{margin-top:14px;padding:14px 18px;border-radius:10px;font-size:14.5px;display:none;animation:slideIn .3s ease}
+  @keyframes slideIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+  .feedback.show{display:block}
+  .feedback.ok{background:#eaf7eb;border-left:4px solid var(--sat-green);color:#1f6b24}
+  .feedback.no{background:#fdeaea;border-left:4px solid var(--sat-red);color:#8b1c1c}
+  .feedback strong{display:block;margin-bottom:6px;font-size:15px}
+  .feedback .review{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(0,0,0,.12);font-size:13.5px;color:var(--sat-blue);font-weight:600}
+  .sat-hero{background:linear-gradient(135deg,var(--sat-blue) 0%,var(--sat-blue-light) 100%);color:#fff;border-radius:16px;padding:32px 36px;margin-bottom:24px;box-shadow:var(--shadow-lg)}
+  .sat-hero h2{font-size:24px;margin-bottom:8px;font-weight:800}
+  .sat-hero p{opacity:.9;font-size:14.5px;max-width:760px}
+  .sat-info-row{display:flex;gap:24px;margin-top:18px;flex-wrap:wrap}
+  .sat-info{background:rgba(255,255,255,.13);padding:10px 18px;border-radius:10px;font-size:13.5px}
+  .sat-info strong{font-size:17px;display:block;font-weight:800}
+  .btn{padding:11px 24px;border-radius:10px;border:none;font-family:inherit;font-size:14.5px;font-weight:700;cursor:pointer;transition:all .2s;letter-spacing:.3px}
+  .btn-primary{background:var(--sat-blue);color:#fff}
+  .btn-primary:hover{background:var(--sat-blue-light);transform:translateY(-1px);box-shadow:var(--shadow-lg)}
+  .btn-primary:disabled{background:#b8c4d6;cursor:not-allowed;transform:none;box-shadow:none}
+  .btn-outline{background:#fff;color:var(--sat-blue);border:2px solid var(--sat-blue)}
+  .btn-outline:hover{background:var(--sat-blue-pale)}
+  .btn-sm{padding:7px 14px;font-size:12.5px;border-radius:8px}
+  .home-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:24px}
+  .home-card{background:#fff;border-radius:14px;padding:24px;box-shadow:var(--shadow);cursor:pointer;transition:all .25s;border:2px solid transparent}
+  .home-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:var(--sat-blue-light)}
+  .home-card .icon{font-size:32px;margin-bottom:10px}
+  .home-card h4{font-size:16px;color:var(--sat-blue);margin-bottom:6px}
+  .home-card p{font-size:13.5px;color:var(--sat-gray)}
+  .hero{background:linear-gradient(135deg,var(--sat-blue) 0%,var(--sat-blue-light) 100%);color:#fff;border-radius:16px;padding:36px 40px;margin-bottom:28px;box-shadow:var(--shadow-lg);position:relative;overflow:hidden}
+  .hero::before{content:'';position:absolute;top:-50px;right:-50px;width:200px;height:200px;border-radius:50%;background:rgba(245,180,0,.12)}
+  .hero h1{font-size:30px;font-weight:800;margin-bottom:10px}
+  .hero p{opacity:.92;font-size:15.5px;max-width:760px;position:relative}
+  .hero-author{margin-top:22px;padding-top:18px;border-top:1px solid rgba(255,255,255,.2);display:inline-flex;align-items:center;gap:14px;font-size:13.5px;position:relative}
+  .hero-author .avatar{width:44px;height:44px;border-radius:50%;background:var(--sat-gold);color:var(--sat-blue);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;flex-shrink:0}
+  .hero-author strong{color:var(--sat-gold);font-weight:800;font-size:14.5px;display:block}
+  .hero-author span{opacity:.9}
+  footer{background:linear-gradient(135deg,#0f2547 0%,var(--sat-blue) 100%);color:#fff;padding:36px 32px 24px;margin-top:40px}
+  .footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:32px}
+  .footer-col h4{color:var(--sat-gold);font-size:14px;text-transform:uppercase;letter-spacing:1px;margin-bottom:14px;font-weight:800}
+  .footer-col p,.footer-col li{font-size:13.5px;opacity:.88;line-height:1.8}
+  .footer-col ul{list-style:none}
+  .footer-col ul li{cursor:pointer;transition:color .2s}
+  .footer-col ul li:hover{color:var(--sat-gold)}
+  .footer-author-card{background:rgba(255,255,255,.08);border-left:4px solid var(--sat-gold);padding:16px 20px;border-radius:10px;margin-top:8px}
+  .footer-author-card .name{font-size:16px;font-weight:800;color:#fff;margin-bottom:4px}
+  .footer-author-card .role{font-size:13px;color:var(--sat-gold);font-weight:600;margin-bottom:8px}
+  .footer-author-card .phone{font-size:14px;font-weight:700;color:#fff;display:inline-flex;align-items:center;gap:6px;background:rgba(245,180,0,.2);padding:6px 12px;border-radius:8px}
+  .footer-bottom{max-width:1200px;margin:32px auto 0;padding-top:20px;border-top:1px solid rgba(255,255,255,.15);text-align:center;font-size:12.5px;opacity:.75;line-height:1.8}
+  .footer-bottom strong{color:var(--sat-gold);font-weight:800}
+  .sat-set-selector{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-bottom:24px}
+  .set-card{background:#fff;border-radius:14px;padding:24px;box-shadow:var(--shadow);cursor:pointer;transition:all .25s;border:2px solid transparent;border-top:5px solid var(--sat-blue);position:relative}
+  .set-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:var(--sat-blue-light);border-top-color:var(--sat-gold)}
+  .set-card .set-badge{display:inline-block;background:var(--sat-blue-pale);color:var(--sat-blue);padding:4px 12px;border-radius:8px;font-size:12px;font-weight:800;letter-spacing:.5px;margin-bottom:10px}
+  .set-card h4{font-size:18px;color:var(--sat-blue);margin-bottom:8px}
+  .set-card p{font-size:13.5px;color:var(--sat-gray);margin-bottom:14px;min-height:52px}
+  .set-card .set-meta{display:flex;gap:14px;font-size:12.5px;color:var(--sat-gray);border-top:1px dashed #e2e8f0;padding-top:12px;flex-wrap:wrap}
+  .set-card .set-meta strong{color:var(--sat-blue);font-weight:800}
+  .set-card .set-start{margin-top:14px;display:inline-flex;align-items:center;gap:6px;font-weight:800;color:var(--sat-blue);font-size:14px}
+  .test-topbar{background:#fff;border-radius:14px;padding:16px 22px;box-shadow:var(--shadow);display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:18px;border:1px solid #eef2f8;position:sticky;top:140px;z-index:50}
+  .test-set-name{font-size:16px;font-weight:800;color:var(--sat-blue)}
+  .test-progress{font-size:13px;color:var(--sat-gray);margin-top:2px}
+  .timer-wrap{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  .timer{font-family:'Courier New',monospace;font-size:24px;font-weight:800;background:var(--sat-blue);color:#fff;padding:8px 18px;border-radius:10px;letter-spacing:2px;min-width:110px;text-align:center;transition:background .3s}
+  .timer.warning{background:var(--sat-yellow);animation:pulse .8s infinite}
+  .timer.danger{background:var(--sat-red);animation:pulse .5s infinite}
+  @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+  .test-layout{display:grid;grid-template-columns:230px 1fr;gap:18px;align-items:start}
+  .test-sidebar{background:#fff;border-radius:14px;padding:18px;box-shadow:var(--shadow);border:1px solid #eef2f8;position:sticky;top:220px}
+  .test-sidebar h4{font-size:12.5px;color:var(--sat-blue);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid var(--sat-blue-pale)}
+  .nav-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+  .nav-cell{aspect-ratio:1;border-radius:8px;border:2px solid #e2e8f0;background:#fff;font-family:inherit;font-weight:700;font-size:12.5px;color:var(--sat-gray);cursor:pointer;transition:all .15s;display:flex;align-items:center;justify-content:center;padding:0}
+  .nav-cell:hover{border-color:var(--sat-blue-light)}
+  .nav-cell.answered{background:var(--sat-blue);color:#fff;border-color:var(--sat-blue)}
+  .nav-cell.current{border-color:var(--sat-gold);box-shadow:0 0 0 3px rgba(245,180,0,.3)}
+  .nav-legend{margin-top:14px;font-size:12px;color:var(--sat-gray);display:flex;flex-direction:column;gap:6px;padding-top:12px;border-top:1px dashed #e2e8f0}
+  .nav-legend > div{display:flex;align-items:center;gap:8px}
+  .legend-box{width:14px;height:14px;border-radius:4px;border:2px solid #e2e8f0;background:#fff;display:inline-block}
+  .legend-box.answered{background:var(--sat-blue);border-color:var(--sat-blue)}
+  .legend-box.current{border-color:var(--sat-gold);box-shadow:0 0 0 2px rgba(245,180,0,.3)}
+  .test-main{min-width:0}
+  .test-main .q-card{margin-bottom:14px}
+  .test-nav-btns{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+  .test-nav-btns .btn{min-width:140px}
+  .result-hero{background:linear-gradient(135deg,var(--sat-blue) 0%,var(--sat-blue-light) 100%);color:#fff;border-radius:16px;padding:32px 36px;margin-bottom:22px;box-shadow:var(--shadow-lg);display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center}
+  .result-hero h2{font-size:22px;margin-bottom:6px}
+  .result-hero p{opacity:.9;font-size:14px}
+  .result-score{text-align:center;background:rgba(255,255,255,.14);padding:18px 30px;border-radius:14px;border:2px solid rgba(245,180,0,.5)}
+  .result-score .num{font-size:42px;font-weight:800;color:var(--sat-gold);line-height:1}
+  .result-score .den{font-size:16px;opacity:.85;margin-top:4px}
+  .result-score .pct{font-size:14px;font-weight:700;margin-top:8px;padding:4px 12px;background:rgba(255,255,255,.2);border-radius:8px;display:inline-block}
+  .level-banner{background:#fff;border-radius:14px;padding:22px 26px;box-shadow:var(--shadow);border-left:6px solid var(--sat-blue);display:flex;gap:20px;align-items:flex-start;margin-bottom:22px}
+  .level-icon{width:64px;height:64px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:34px;flex-shrink:0;color:#fff}
+  .level-content{flex:1;min-width:0}
+  .level-content h3{font-size:22px;margin-bottom:8px;font-weight:800}
+  .level-content p{font-size:14.5px;color:var(--sat-text);margin-bottom:6px;line-height:1.65}
+  .level-content .level-advice{background:var(--sat-blue-pale);padding:12px 16px;border-radius:8px;margin-top:10px;font-size:14px;border-left:3px solid var(--sat-blue);line-height:1.65}
+  .result-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-bottom:22px}
+  .stat-box{background:#fff;border-radius:12px;padding:18px 20px;box-shadow:var(--shadow);border-left:4px solid var(--sat-blue)}
+  .stat-box.green{border-left-color:var(--sat-green)}
+  .stat-box.red{border-left-color:var(--sat-red)}
+  .stat-box.yellow{border-left-color:var(--sat-yellow)}
+  .stat-box .label{font-size:11.5px;color:var(--sat-gray);text-transform:uppercase;letter-spacing:.5px;font-weight:700}
+  .stat-box .value{font-size:26px;font-weight:800;color:var(--sat-blue);margin-top:4px;line-height:1.1}
+  .stat-box.green .value{color:var(--sat-green)}
+  .stat-box.red .value{color:var(--sat-red)}
+  .stat-box.yellow .value{color:#b8860b}
+  .stat-box .sub{font-size:12.5px;color:var(--sat-gray);margin-top:4px}
+  .result-section-title{font-size:18px;font-weight:800;color:var(--sat-blue);margin:28px 0 14px;display:flex;align-items:center;gap:10px}
+  .result-section-title .icon{background:var(--sat-blue-pale);color:var(--sat-blue);width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px}
+  .time-analysis{background:#fff;border-radius:14px;padding:22px 26px;box-shadow:var(--shadow);margin-bottom:22px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;border:1px solid #eef2f8}
+  .time-block{display:flex;gap:14px;align-items:flex-start}
+  .time-block .tb-icon{width:46px;height:46px;border-radius:11px;background:var(--sat-blue-pale);color:var(--sat-blue);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+  .time-block .tb-content{flex:1;min-width:0}
+  .time-block .tb-label{font-size:11.5px;text-transform:uppercase;letter-spacing:.5px;color:var(--sat-gray);font-weight:700;margin-bottom:4px}
+  .time-block .tb-value{font-size:22px;font-weight:800;color:var(--sat-blue);line-height:1.1}
+  .time-block .tb-desc{font-size:12.5px;color:var(--sat-gray);margin-top:4px;line-height:1.5}
+  .topic-table{width:100%;border-collapse:collapse;font-size:14px;background:#fff;border-radius:12px;overflow:hidden;box-shadow:var(--shadow)}
+  .topic-table th,.topic-table td{padding:12px 16px;text-align:left;border-bottom:1px solid #eef2f8;vertical-align:middle}
+  .topic-table th{background:var(--sat-blue-pale);color:var(--sat-blue);font-size:12px;text-transform:uppercase;letter-spacing:.5px;font-weight:800}
+  .topic-table tr:last-child td{border-bottom:none}
+  .topic-bar{height:9px;background:#e2e8f0;border-radius:5px;overflow:hidden;min-width:100px;flex:1}
+  .topic-bar-cell{display:flex;align-items:center;gap:10px}
+  .topic-bar-fill{height:100%;background:var(--sat-green);transition:width .8s ease;border-radius:5px}
+  .topic-bar-fill.warn{background:var(--sat-yellow)}
+  .topic-bar-fill.bad{background:var(--sat-red)}
+  .topic-score{font-weight:800;color:var(--sat-blue);min-width:44px;text-align:right}
+  .topic-recommend{font-size:12.5px;color:var(--sat-gray);margin-top:6px;padding:8px 12px;background:#fafcff;border-radius:6px;border-left:2px solid var(--sat-blue-light);line-height:1.5;font-style:italic}
+  .roadmap{background:#fff;border-radius:14px;padding:26px 28px;box-shadow:var(--shadow);border-left:6px solid var(--sat-gold);margin-bottom:22px}
+  .roadmap h3{font-size:19px;color:var(--sat-blue);margin-bottom:6px;display:flex;align-items:center;gap:10px}
+  .roadmap .roadmap-sub{font-size:13.5px;color:var(--sat-gray);margin-bottom:18px;line-height:1.6}
+  .roadmap-phase{padding:18px 0;border-bottom:1px dashed #e2e8f0;display:flex;gap:18px;align-items:flex-start}
+  .roadmap-phase:last-child{border-bottom:none;padding-bottom:0}
+  .roadmap-phase .phase-num{width:48px;height:48px;border-radius:12px;background:var(--sat-blue);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px;flex-shrink:0}
+  .roadmap-phase.phase-1 .phase-num{background:var(--sat-red)}
+  .roadmap-phase.phase-2 .phase-num{background:#E8A317}
+  .roadmap-phase.phase-3 .phase-num{background:var(--sat-green)}
+  .roadmap-phase .phase-content{flex:1;min-width:0}
+  .roadmap-phase h4{font-size:15.5px;color:var(--sat-blue);margin-bottom:8px;font-weight:800;display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+  .roadmap-phase .phase-time{display:inline-block;background:var(--sat-blue-pale);color:var(--sat-blue);font-size:11.5px;font-weight:700;padding:2px 10px;border-radius:6px}
+  .roadmap-phase ul{padding-left:22px;margin-top:6px}
+  .roadmap-phase li{font-size:13.5px;margin-bottom:6px;color:var(--sat-text);line-height:1.6}
+  .roadmap-phase .phase-actions{margin-top:12px;display:flex;gap:8px;flex-wrap:wrap}
+  .wrong-item{background:#fff;border-radius:12px;padding:20px 22px;box-shadow:var(--shadow);margin-bottom:14px;border-left:5px solid var(--sat-red)}
+  .wrong-item.unanswered{border-left-color:var(--sat-gray)}
+  .wrong-item .wrong-head{display:flex;gap:12px;align-items:flex-start;margin-bottom:12px}
+  .wrong-item .wrong-num{background:var(--sat-red);color:#fff;min-width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;flex-shrink:0}
+  .wrong-item.unanswered .wrong-num{background:var(--sat-gray)}
+  .wrong-item .wrong-q{font-size:15px;font-weight:600;flex:1;line-height:1.55}
+  .wrong-item .topic-tag{display:inline-block;background:var(--sat-blue-pale);color:var(--sat-blue);font-size:11.5px;padding:2px 10px;border-radius:6px;font-weight:700;margin-top:6px}
+  .wrong-item .ans-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0;font-size:14px}
+  .wrong-item .ans-box{padding:10px 14px;border-radius:8px;background:#f5f7fa;border-left:3px solid var(--sat-gray)}
+  .wrong-item .ans-box.your{background:#fdeaea;border-left-color:var(--sat-red)}
+  .wrong-item .ans-box.correct{background:#eaf7eb;border-left-color:var(--sat-green)}
+  .wrong-item .ans-box .lbl{font-size:11.5px;text-transform:uppercase;letter-spacing:.5px;color:var(--sat-gray);font-weight:700;margin-bottom:4px}
+  .wrong-item .ans-box .val{font-weight:600;color:var(--sat-text)}
+  .wrong-item .exp-box{background:var(--sat-blue-pale);padding:12px 16px;border-radius:8px;font-size:14px;border-left:3px solid var(--sat-blue);margin-top:10px;line-height:1.7}
+  .wrong-item .exp-box .lbl{font-weight:800;color:var(--sat-blue);margin-bottom:4px;font-size:13px}
+  .wrong-item .review-box{margin-top:10px;font-size:13.5px;color:var(--sat-blue);font-weight:600;padding:10px 14px;background:#fafcff;border-radius:8px;border:1px dashed var(--sat-blue-light)}
+  .result-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+  @media(max-width:900px){.test-layout{grid-template-columns:1fr}.test-sidebar{position:static}.nav-grid{grid-template-columns:repeat(10,1fr)}.result-hero{grid-template-columns:1fr}}
+  @media(max-width:640px){header{padding:14px 16px}.brand-title{font-size:16px}.header-credit{font-size:11.5px;padding:6px 12px;text-align:left}.nav-btn{padding:14px 12px;font-size:13px}main{padding:20px 12px 60px}.card{padding:20px 18px}.sat-hero{padding:24px 20px}.timer{font-size:20px;padding:6px 14px;min-width:90px}.hero{padding:26px 22px}.hero h1{font-size:22px}.page-title{font-size:22px}.footer-inner{grid-template-columns:1fr;gap:24px}footer{padding:28px 18px 20px}.nav-grid{grid-template-columns:repeat(6,1fr)}.wrong-item .ans-row{grid-template-columns:1fr}.result-score .num{font-size:34px}.test-topbar{position:static}.test-sidebar{position:static}.level-banner{flex-direction:column;gap:14px;padding:18px}.level-icon{width:52px;height:52px;font-size:28px}.level-content h3{font-size:18px}.roadmap{padding:20px 18px}.roadmap-phase{flex-direction:column;gap:12px}.time-analysis{padding:18px;grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="brand">
+      <div class="brand-logo">SAT</div>
+      <div><div class="brand-title">SAT Math Prep</div><div class="brand-sub">Lines, Planes & Spheres in Space</div></div>
+    </div>
+    <div class="header-credit">Thiết kế bởi <strong>Thầy Nguyễn Hữu Trung</strong><br>THPT Trần Phú • ☎ 0964 848 989</div>
+  </div>
+</header>
+
+<nav>
+  <div class="nav-inner">
+    <button class="nav-btn active" data-tab="home">🏠 Trang chủ</button>
+    <button class="nav-btn" data-tab="knowledge">📐 Kiến thức</button>
+    <button class="nav-btn" data-tab="vocab">📚 Từ vựng</button>
+    <button class="nav-btn" data-tab="practice">✏️ Luyện tập</button>
+    <button class="nav-btn" data-tab="sat">⏱️ SAT Simulation</button>
+  </div>
+</nav>
+
+<main>
+<section id="home" class="section active">
+  <div class="hero">
+    <h1>Chinh phục SAT Math: Lines, Planes & Spheres in Space</h1>
+    <p>Khóa ôn tập chuyên sâu chủ đề <strong>Phương trình đường thẳng, mặt phẳng, mặt cầu trong không gian</strong> dành cho học sinh lớp 12 chuẩn bị kỳ thi <strong>Digital SAT</strong>. Nội dung song ngữ Việt–Anh, 40 từ vựng có phiên âm IPA, 30 câu luyện tập tức thì và <strong>3 bộ SAT Simulation × 30 câu = 90 câu</strong> với đồng hồ, tổng kết điểm và lộ trình ôn tập cá nhân hóa.</p>
+    <div class="hero-author"><div class="avatar">NT</div><div><strong>Thầy Nguyễn Hữu Trung</strong><span>Giáo viên Toán — THPT Trần Phú • ☎ 0964 848 989</span></div></div>
+  </div>
+  <div class="home-grid">
+    <div class="home-card" onclick="switchTab('knowledge')"><div class="icon">📐</div><h4>1. Kiến thức cơ bản</h4><p>6 mục lý thuyết song ngữ: phương trình đường thẳng, mặt phẳng, mặt cầu, vị trí tương đối, góc và khoảng cách, ứng dụng.</p></div>
+    <div class="home-card" onclick="switchTab('vocab')"><div class="icon">📚</div><h4>2. Từ vựng chuyên ngành</h4><p>40 từ khóa SAT Math về phương trình đường – mặt – cầu kèm phiên âm IPA, nghĩa tiếng Việt và phát âm tự động.</p></div>
+    <div class="home-card" onclick="switchTab('practice')"><div class="icon">✏️</div><h4>3. Luyện tập 3 nhóm</h4><p>30 câu trắc nghiệm tiếng Anh chia 3 mức độ: Cơ bản — Trung bình — Nâng cao, chấm điểm ngay.</p></div>
+    <div class="home-card" onclick="switchTab('sat')"><div class="icon">⏱️</div><h4>4. SAT Simulation</h4><p>90 câu hỏi chuẩn Digital SAT, đồng hồ 45 phút/bộ, tổng kết điểm và lộ trình ôn tập cá nhân hóa.</p></div>
+  </div>
+</section>
+
+<section id="knowledge" class="section">
+  <h2 class="page-title">📐 Kiến thức cơ bản — Đường thẳng, Mặt phẳng & Mặt cầu</h2>
+  <p class="page-subtitle">Song ngữ Việt — Anh · Dành cho học sinh lớp 12 chuẩn bị thi Digital SAT</p>
+
+  <div class="card">
+    <h3><span class="num">I</span> Phương trình đường thẳng trong không gian (Line Equations)</h3>
+    <table>
+      <tr><th>Tiếng Việt</th><th>English</th></tr>
+      <tr><td>Đường thẳng \(\Delta\) đi qua \(M_0(x_0;y_0;z_0)\) và có vectơ chỉ phương \(\vec{u}=(a;b;c)\) có phương trình tham số: \(\begin{cases}x=x_0+at\\y=y_0+bt\\z=z_0+ct\end{cases}\).</td><td>A line through \(M_0(x_0,y_0,z_0)\) with direction vector \(\vec{u}=\langle a,b,c\rangle\) has parametric equations \(\begin{cases}x=x_0+at\\y=y_0+bt\\z=z_0+ct\end{cases}\).</td></tr>
+      <tr><td>Phương trình chính tắc (khi \(abc\neq 0\)): \(\dfrac{x-x_0}{a}=\dfrac{y-y_0}{b}=\dfrac{z-z_0}{c}\).</td><td>Symmetric form (if \(abc\neq 0\)): \(\dfrac{x-x_0}{a}=\dfrac{y-y_0}{b}=\dfrac{z-z_0}{c}\).</td></tr>
+      <tr><td>Đường thẳng qua hai điểm \(A,B\) có vectơ chỉ phương \(\overrightarrow{AB}\).</td><td>A line through two points \(A,B\) has direction vector \(\overrightarrow{AB}\).</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3><span class="num">II</span> Phương trình mặt phẳng (Plane Equations)</h3>
+    <div class="formula-box"><strong>Vectơ pháp tuyến</strong> \(\vec{n}=(A;B;C)\neq\vec{0}\) vuông góc với mặt phẳng.</div>
+    <div class="formula-box"><strong>Phương trình tổng quát:</strong> \(Ax+By+Cz+D=0\).</div>
+    <div class="formula-box"><strong>Mặt phẳng qua \(M_0(x_0;y_0;z_0)\) với VTPT \(\vec{n}=(A;B;C)\):</strong> \(A(x-x_0)+B(y-y_0)+C(z-z_0)=0\).</div>
+    <div class="formula-box"><strong>Mặt phẳng qua 3 điểm không thẳng hàng \(A,B,C\):</strong> \(\vec{n}=\overrightarrow{AB}\times\overrightarrow{AC}\).</div>
+    <div class="formula-box"><strong>Mặt phẳng theo đoạn chắn:</strong> \(\dfrac{x}{a}+\dfrac{y}{b}+\dfrac{z}{c}=1\) (cắt các trục tại \(a,b,c\)).</div>
+  </div>
+
+  <div class="card">
+    <h3><span class="num">III</span> Phương trình mặt cầu (Sphere Equations)</h3>
+    <div class="formula-box"><strong>Dạng chính tắc:</strong> \((x-a)^2+(y-b)^2+(z-c)^2=R^2\) — tâm \(I(a;b;c)\), bán kính \(R\).</div>
+    <div class="formula-box"><strong>Dạng khai triển:</strong> \(x^2+y^2+z^2-2ax-2by-2cz+d=0\), điều kiện \(a^2+b^2+c^2-d>0\).</div>
+    <div class="formula-box">Tâm \(I(a;b;c)\), bán kính \(R=\sqrt{a^2+b^2+c^2-d}\).</div>
+    <div class="formula-box"><strong>Mặt cầu đường kính \(AB\):</strong> tâm là trung điểm \(AB\), \(R=\dfrac{AB}{2}\).</div>
+  </div>
+
+  <div class="card">
+    <h3><span class="num">IV</span> Vị trí tương đối (Relative Positions)</h3>
+    <table>
+      <tr><th>Đối tượng</th><th>Điều kiện</th></tr>
+      <tr><td>Đường thẳng và mặt phẳng</td><td>Thay phương trình đường vào mặt phẳng, xét số nghiệm theo \(t\).</td></tr>
+      <tr><td>Hai đường thẳng</td><td>So sánh \(\vec{u}_1,\vec{u}_2\): cùng phương → song song/trùng; không cùng phương → cắt nhau hoặc chéo nhau.</td></tr>
+      <tr><td>Hai mặt phẳng</td><td>\(\vec{n}_1\parallel\vec{n}_2\) → song song/trùng; ngược lại → cắt nhau theo một đường thẳng.</td></tr>
+      <tr><td>Mặt phẳng và mặt cầu</td><td>So sánh \(d(I,(P))\) với \(R\): \(d>R\) không cắt; \(d=R\) tiếp xúc; \(d<R\) cắt theo đường tròn.</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3><span class="num">V</span> Khoảng cách và Góc (Distances & Angles)</h3>
+    <div class="formula-box"><strong>Khoảng cách điểm – mặt phẳng:</strong> \(d(M_0,(P))=\dfrac{|Ax_0+By_0+Cz_0+D|}{\sqrt{A^2+B^2+C^2}}\).</div>
+    <div class="formula-box"><strong>Khoảng cách hai mặt phẳng song song:</strong> \(d=\dfrac{|D_1-D_2|}{\sqrt{A^2+B^2+C^2}}\).</div>
+    <div class="formula-box"><strong>Khoảng cách điểm – đường thẳng:</strong> \(d(M,\Delta)=\dfrac{|\overrightarrow{M_0M}\times\vec{u}|}{|\vec{u}|}\).</div>
+    <div class="formula-box"><strong>Góc giữa hai đường thẳng:</strong> \(\cos\varphi=\dfrac{|\vec{u}_1\cdot\vec{u}_2|}{|\vec{u}_1||\vec{u}_2|}\).</div>
+    <div class="formula-box"><strong>Góc giữa hai mặt phẳng:</strong> \(\cos\varphi=\dfrac{|\vec{n}_1\cdot\vec{n}_2|}{|\vec{n}_1||\vec{n}_2|}\).</div>
+  </div>
+
+  <div class="card">
+    <h3><span class="num">VI</span> Ứng dụng thực tế (Applications)</h3>
+    <ul>
+      <li><strong>Định vị GPS:</strong> mỗi vệ tinh xác định một mặt cầu; giao của các mặt cầu cho vị trí.</li>
+      <li><strong>Kiến trúc & Xây dựng:</strong> mặt phẳng dùng cho mái nhà, sàn; mặt cầu cho mái vòm.</li>
+      <li><strong>Đồ họa 3D:</strong> tia sáng là đường thẳng, bề mặt là mặt phẳng/mặt cầu.</li>
+      <li><strong>Thiên văn:</strong> quỹ đạo, khoảng cách giữa các thiên thể tính qua phương trình đường – mặt.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="vocab" class="section">
+  <h2 class="page-title">📚 Hệ thống từ vựng SAT Math — Lines, Planes & Spheres</h2>
+  <p class="page-subtitle">40 từ khóa chuyên ngành kèm phiên âm IPA — Nhấn 🔊 để nghe phát âm</p>
+  <div class="card">
+    <input type="text" id="vocabSearch" class="vocab-search" placeholder="🔍 Tìm kiếm từ vựng (tiếng Anh hoặc tiếng Việt)...">
+    <div style="overflow-x:auto">
+      <table class="vocab-table" id="vocabTable">
+        <thead><tr><th>#</th><th>English</th><th>Phiên âm (IPA)</th><th>Nghĩa</th><th>Ví dụ</th><th></th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="practice" class="section">
+  <h2 class="page-title">✏️ Luyện tập trắc nghiệm — Lines, Planes & Spheres</h2>
+  <p class="page-subtitle">30 câu hỏi tiếng Anh · Chấm điểm ngay · Gợi ý ôn lại lý thuyết nếu sai</p>
+  <div class="group-tabs">
+    <button class="group-tab active" data-group="1">🟢 Nhóm 1 — Cơ bản <span class="badge">10</span></button>
+    <button class="group-tab" data-group="2">🟡 Nhóm 2 — Trung bình <span class="badge">10</span></button>
+    <button class="group-tab" data-group="3">🔴 Nhóm 3 — Nâng cao <span class="badge">10</span></button>
+  </div>
+  <div class="group-panel active" id="panel-1"></div>
+  <div class="group-panel" id="panel-2"></div>
+  <div class="group-panel" id="panel-3"></div>
+</section>
+
+<section id="sat" class="section">
+  <h2 class="page-title">⏱️ SAT Digital Simulation — Lines, Planes & Spheres</h2>
+  <p class="page-subtitle">3 bộ đề × 30 câu — Mô phỏng cấu trúc Digital SAT Math · Đồng hồ 45 phút</p>
+  <div class="sat-hero">
+    <h2>📘 Digital SAT Math — Lines, Planes & Spheres in Space</h2>
+    <p>Mỗi bộ gồm <strong>30 câu hỏi tuyển chọn</strong>, thời gian <strong>45 phút</strong>. Sau khi nộp bài, bạn nhận <strong>bảng tổng kết điểm</strong>, <strong>đánh giá năng lực</strong>, <strong>lộ trình ôn tập cá nhân hóa</strong> và <strong>phân tích chi tiết từng câu sai</strong>.</p>
+    <div class="sat-info-row">
+      <div class="sat-info"><strong>90</strong>Câu hỏi (3 bộ)</div>
+      <div class="sat-info"><strong>45:00</strong>Mỗi bộ</div>
+      <div class="sat-info"><strong>Calculator</strong>Allowed</div>
+      <div class="sat-info"><strong>A–D</strong>4 lựa chọn</div>
+    </div>
+  </div>
+  <div id="satSetSelector" class="sat-set-selector"></div>
+  <div id="satTestScreen" style="display:none">
+    <div class="test-topbar">
+      <div>
+        <div class="test-set-name" id="testSetName">Bộ 1</div>
+        <div class="test-progress" id="testProgress">Câu 1 / 30 · Đã trả lời 0/30</div>
+      </div>
+      <div class="timer-wrap">
+        <div class="timer" id="testTimer">45:00</div>
+        <button class="btn btn-primary" id="btnSubmitTest">📝 Nộp bài</button>
+        <button class="btn btn-outline" id="btnForceResult">📊 Xem kết quả ngay</button>
+        <button class="btn btn-outline" id="btnQuitTest">✕ Thoát</button>
+      </div>
+    </div>
+    <div class="test-layout">
+      <aside class="test-sidebar">
+        <h4>Bảng câu hỏi</h4>
+        <div class="nav-grid" id="navGrid"></div>
+        <div class="nav-legend">
+          <div><span class="legend-box current"></span> Câu đang xem</div>
+          <div><span class="legend-box answered"></span> Đã trả lời</div>
+          <div><span class="legend-box"></span> Chưa trả lời</div>
+        </div>
+      </aside>
+      <div class="test-main">
+        <div class="q-card" id="testQuestionCard">
+          <div class="q-head"><div class="q-num" id="testQNum">1</div><div class="q-text" id="testQText"></div></div>
+          <div class="options" id="testOptions"></div>
+        </div>
+        <div class="test-nav-btns">
+          <button class="btn btn-outline" id="btnPrev">← Câu trước</button>
+          <button class="btn btn-primary" id="btnNext">Câu tiếp →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="satResultScreen" style="display:none"></div>
+</section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-col">
+      <h4>📘 Về khóa học</h4>
+      <p>Web ôn thi SAT Math chuyên đề <strong>Lines, Planes & Spheres in Space</strong> — Phương trình đường thẳng, mặt phẳng, mặt cầu trong không gian.</p>
+      <div class="footer-author-card"><div class="name">👨‍🏫 Thầy Nguyễn Hữu Trung</div><div class="role">Giáo viên Toán — THPT Trần Phú</div><div class="phone">📞 0964 848 989</div></div>
+    </div>
+    <div class="footer-col">
+      <h4>🧭 Điều hướng</h4>
+      <ul>
+        <li onclick="switchTab('home')">🏠 Trang chủ</li>
+        <li onclick="switchTab('knowledge')">📐 Kiến thức cơ bản</li>
+        <li onclick="switchTab('vocab')">📚 Từ vựng SAT Math</li>
+        <li onclick="switchTab('practice')">✏️ Luyện tập 3 nhóm</li>
+        <li onclick="switchTab('sat')">⏱️ SAT Simulation</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>📞 Liên hệ</h4>
+      <ul>
+        <li>👤 <strong>Thầy Nguyễn Hữu Trung</strong></li>
+        <li>🏫 THPT Trần Phú</li>
+        <li>☎️ 0964 848 989</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 <strong>Thầy Nguyễn Hữu Trung — THPT Trần Phú</strong></p>
+    <p style="margin-top:6px">Made with ❤️ for high school students preparing for the Digital SAT</p>
+  </div>
+</footer>
+
+<script>
+/* ============ TAB SWITCHING ============ */
+function switchTab(tab){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById(tab).classList.add('active');
+  document.querySelector('.nav-btn[data-tab="'+tab+'"]').classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+document.querySelectorAll('.nav-btn').forEach(btn=>{btn.addEventListener('click',()=>switchTab(btn.dataset.tab));});
+
+/* ============ SOUND ============ */
+let audioCtx=null;
+function getCtx(){if(!audioCtx) audioCtx=new (window.AudioContext||window.webkitAudioContext)();if(audioCtx.state==='suspended') audioCtx.resume();return audioCtx;}
+function playDing(){try{const ctx=getCtx();[880,1320].forEach((f,i)=>{const o=ctx.createOscillator(),g=ctx.createGain();o.connect(g);g.connect(ctx.destination);o.type='sine';o.frequency.setValueAtTime(f,ctx.currentTime+i*0.08);g.gain.setValueAtTime(0.18,ctx.currentTime+i*0.08);g.gain.exponentialRampToValueAtTime(0.001,ctx.currentTime+i*0.08+0.35);o.start(ctx.currentTime+i*0.08);o.stop(ctx.currentTime+i*0.08+0.4);});}catch(e){}}
+function playBuzz(){try{const ctx=getCtx();const o=ctx.createOscillator(),g=ctx.createGain();o.connect(g);g.connect(ctx.destination);o.type='sawtooth';o.frequency.setValueAtTime(180,ctx.currentTime);o.frequency.exponentialRampToValueAtTime(90,ctx.currentTime+0.3);g.gain.setValueAtTime(0.15,ctx.currentTime);g.gain.exponentialRampToValueAtTime(0.001,ctx.currentTime+0.35);o.start(ctx.currentTime);o.stop(ctx.currentTime+0.4);}catch(e){}}
+function playFanfare(){try{const ctx=getCtx();[523,659,784,1046].forEach((f,i)=>{const o=ctx.createOscillator(),g=ctx.createGain();o.connect(g);g.connect(ctx.destination);o.type='sine';o.frequency.setValueAtTime(f,ctx.currentTime+i*0.12);g.gain.setValueAtTime(0.2,ctx.currentTime+i*0.12);g.gain.exponentialRampToValueAtTime(0.001,ctx.currentTime+i*0.12+0.5);o.start(ctx.currentTime+i*0.12);o.stop(ctx.currentTime+i*0.12+0.6);});}catch(e){}}
+
+/* ============ VOCABULARY 40 từ ============ */
+const vocab=[
+  ["Line equation","/laɪn ɪˈkweɪʒn/","Phương trình đường thẳng","\\(x=x_0+at\\)"],
+  ["Plane equation","/pleɪn ɪˈkweɪʒn/","Phương trình mặt phẳng","\\(Ax+By+Cz+D=0\\)."],
+  ["Sphere equation","/sfɪər ɪˈkweɪʒn/","Phương trình mặt cầu","\\((x-a)^2+(y-b)^2+(z-c)^2=R^2\\)."],
+  ["Parametric equation","/ˌpærəˈmetrɪk ɪˈkweɪʒn/","Phương trình tham số","\\(x=x_0+at\\)."],
+  ["Symmetric equation","/sɪˈmetrɪk ɪˈkweɪʒn/","Phương trình chính tắc","\\(\\dfrac{x-x_0}{a}=\\dfrac{y-y_0}{b}\\)."],
+  ["General equation","/ˈdʒenrəl ɪˈkweɪʒn/","Phương trình tổng quát","Plane equation general form."],
+  ["Standard form","/ˈstændərd fɔːrm/","Dạng chính tắc","\\((x-a)^2+...=R^2\\)."],
+  ["Direction vector","/dəˈrekʃn ˈvektər/","Vectơ chỉ phương","\\(\\vec{u}=(a;b;c)\\)."],
+  ["Normal vector","/ˈnɔːrml ˈvektər/","Vectơ pháp tuyến","\\(\\vec{n}=(A;B;C)\\)."],
+  ["Intersection","/ˌɪntərˈsekʃn/","Giao điểm / sự giao nhau","Line-plane intersection."],
+  ["Point of intersection","/pɔɪnt əv ˌɪntərˈsekʃn/","Giao điểm","Find the intersection point."],
+  ["Parallel","/ˈpærəlel/","Song song","Two parallel planes."],
+  ["Perpendicular","/ˌpɜːrpənˈdɪkjələr/","Vuông góc","Two perpendicular lines."],
+  ["Skew lines","/skjuː laɪnz/","Hai đường thẳng chéo nhau","Skew lines in space."],
+  ["Coplanar","/koʊˈpleɪnər/","Đồng phẳng","Three coplanar points."],
+  ["Tangent","/ˈtændʒənt/","Tiếp xúc","Plane tangent to sphere."],
+  ["Distance","/ˈdɪstəns/","Khoảng cách","Distance from point to plane."],
+  ["Angle","/ˈæŋɡl/","Góc","Angle between two planes."],
+  ["Projection","/prəˈdʒekʃn/","Hình chiếu","Projection of a point on a line."],
+  ["Foot of perpendicular","/fʊt əv ˌpɜːrpənˈdɪkjələr/","Chân đường vuông góc","Foot from origin to plane."],
+  ["Center","/ˈsentər/","Tâm","Center of sphere."],
+  ["Radius","/ˈreɪdiəs/","Bán kính","Radius \\(R=5\\)."],
+  ["Origin","/ˈɔːrɪdʒɪn/","Gốc tọa độ","\\(O(0;0;0)\\)."],
+  ["Coordinate","/koʊˈɔːrdɪnət/","Tọa độ","Point \\(A(1;2;3)\\)."],
+  ["Three-dimensional","/ˌθriː daɪˈmenʃənl/","Ba chiều","3D space."],
+  ["Substitute","/ˈsʌbstɪtjuːt/","Thay thế","Substitute into the equation."],
+  ["Simplify","/ˈsɪmplɪfaɪ/","Đơn giản hóa","Simplify the expression."],
+  ["Solve","/sɒlv/","Giải","Solve the system."],
+  ["System of equations","/ˈsɪstəm əv ɪˈkweɪʒnz/","Hệ phương trình","Solve the system of equations."],
+  ["Linear","/ˈlɪniər/","Tuyến tính","Linear equation."],
+  ["Quadratic","/kwɒˈdrætɪk/","Bậc hai","Quadratic equation."],
+  ["Coefficient","/ˌkoʊɪˈfɪʃnt/","Hệ số","The coefficient of \\(x\\)."],
+  ["Constant","/ˈkɒnstənt/","Hằng số","The constant term \\(D\\)."],
+  ["Variable","/ˈveəriəbl/","Biến số","Three variables."],
+  ["Vector","/ˈvektər/","Vectơ","\\(\\vec{u}=\\langle 1;2;3\\rangle\\)."],
+  ["Dot product","/dɒt ˈprɒdʌkt/","Tích vô hướng","\\(\\vec{a}\\cdot\\vec{b}=0\\)."],
+  ["Cross product","/krɒs ˈprɒdʌkt/","Tích có hướng","\\(\\vec{a}\\times\\vec{b}\\)."],
+  ["Distance formula","/ˈdɪstəns ˈfɔːrmjələ/","Công thức khoảng cách","\\(d=\\dfrac{|Ax_0+...|}{\\sqrt{A^2+...}}\\)."],
+  ["Relative position","/ˈrelətɪv pəˈzɪʃn/","Vị trí tương đối","Relative position of two lines."],
+  ["Optimization","/ˌɒptɪmaɪˈzeɪʃn/","Tối ưu hóa","Optimization problem."]
+];
+
+function renderVocab(filter){
+  filter = filter || "";
+  const tbody=document.querySelector('#vocabTable tbody');
+  tbody.innerHTML='';
+  const f=filter.toLowerCase().trim();
+  vocab.forEach((v,i)=>{
+    if(f && !(v[0].toLowerCase().indexOf(f)>=0||v[2].toLowerCase().indexOf(f)>=0)) return;
+    const tr=document.createElement('tr');
+    tr.innerHTML='<td>'+(i+1)+'</td><td>'+v[0]+'</td><td>'+v[1]+'</td><td>'+v[2]+'</td><td>'+v[3]+'</td><td><button class="speak-btn" data-word="'+v[0]+'" title="Phát âm">🔊</button></td>';
+    tbody.appendChild(tr);
+  });
+  if(window.renderMathInElement){renderMathInElement(tbody,{delimiters:[{left:'\\(',right:'\\)',display:false}]});}
+}
+document.getElementById('vocabSearch').addEventListener('input',function(e){renderVocab(e.target.value);});
+document.addEventListener('click',function(e){
+  if(e.target.classList.contains('speak-btn')){
+    const word=e.target.dataset.word;
+    if('speechSynthesis' in window){speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(word);u.lang='en-US';u.rate=0.9;speechSynthesis.speak(u);}
+  }
+});
+renderVocab();
+
+/* ============ PRACTICE DATA 30 câu ============ */
+const practiceData={
+  1:[
+    {q:"What is the direction vector of the line \\(x=1+2t,\\ y=3-t,\\ z=2+4t\\)?",opts:["\\((2,-1,4)\\)","\\((1,3,2)\\)","\\((2,1,4)\\)","\\((-1,3,-2)\\)"],ans:0,exp:"Hệ số của \\(t\\) chính là tọa độ vectơ chỉ phương: \\((2,-1,4)\\).",review:"Ôn lại mục I — Phương trình tham số đường thẳng"},
+    {q:"What is the normal vector of the plane \\(2x-y+3z-5=0\\)?",opts:["\\((2,-1,3)\\)","\\((2,1,3)\\)","\\((-2,1,3)\\)","\\((2,-1,-3)\\)"],ans:0,exp:"Vectơ pháp tuyến là bộ ba hệ số \\((A;B;C)=(2;-1;3)\\).",review:"Ôn lại mục II — Vectơ pháp tuyến của mặt phẳng"},
+    {q:"The plane with normal vector \\((1,2,3)\\) passing through the origin has equation:",opts:["\\(x+2y+3z=0\\)","\\(x-2y+3z=0\\)","\\(2x+y+3z=0\\)","\\(x+2y-3z=0\\)"],ans:0,exp:"Mặt phẳng qua \\(O(0;0;0)\\) có VTPT \\((1;2;3)\\): \\(1(x-0)+2(y-0)+3(z-0)=0\\).",review:"Ôn lại mục II — Phương trình mặt phẳng qua điểm"},
+    {q:"What is the center of the sphere \\((x-2)^2+(y+1)^2+(z-3)^2=25\\)?",opts:["\\((2,-1,3)\\)","\\((-2,1,-3)\\)","\\((2,1,3)\\)","\\((2,-1,-3)\\)"],ans:0,exp:"Dạng chính tắc \\((x-a)^2+(y-b)^2+(z-c)^2=R^2\\) có tâm \\((a;b;c)=(2;-1;3)\\).",review:"Ôn lại mục III — Tâm mặt cầu"},
+    {q:"What is the radius of the sphere \\((x-2)^2+(y+1)^2+(z-3)^2=25\\)?",opts:["\\(5\\)","\\(25\\)","\\(\\sqrt{5}\\)","\\(12.5\\)"],ans:0,exp:"\\(R^2=25\\Rightarrow R=5\\).",review:"Ôn lại mục III — Bán kính mặt cầu"},
+    {q:"The sphere with center \\((1,2,-1)\\) and radius \\(3\\) has equation:",opts:["\\((x-1)^2+(y-2)^2+(z+1)^2=9\\)","\\((x+1)^2+(y+2)^2+(z-1)^2=9\\)","\\((x-1)^2+(y-2)^2+(z-1)^2=9\\)","\\((x-1)^2+(y+2)^2+(z+1)^2=9\\)"],ans:0,exp:"\\((x-1)^2+(y-2)^2+(z+1)^2=3^2=9\\).",review:"Ôn lại mục III — Viết phương trình mặt cầu"},
+    {q:"Does the point \\((2,3,4)\\) lie on the plane \\(x+y+z-9=0\\)?",opts:["Yes","No","Cannot determine","Only approximately"],ans:0,exp:"Thay \\(2+3+4-9=0\\) → điểm thuộc mặt phẳng.",review:"Ôn lại mục II — Điểm thuộc mặt phẳng"},
+    {q:"The direction vector from \\(A(1,0,2)\\) to \\(B(3,4,1)\\) is:",opts:["\\((2,4,-1)\\)","\\((-2,-4,1)\\)","\\((4,4,3)\\)","\\((2,4,1)\\)"],ans:0,exp:"\\(\\overrightarrow{AB}=(3-1;4-0;1-2)=(2;4;-1)\\).",review:"Ôn lại mục I — Vectơ chỉ phương qua 2 điểm"},
+    {q:"The parametric equation of the line through \\((1,2,3)\\) with direction \\((2,-1,1)\\) is:",opts:["\\(x=1+2t,\\ y=2-t,\\ z=3+t\\)","\\(x=1-2t,\\ y=2+t,\\ z=3-t\\)","\\(x=2+t,\\ y=-1+2t,\\ z=1+3t\\)","\\(x=1+2t,\\ y=2+t,\\ z=3+t\\)"],ans:0,exp:"Công thức \\(x=x_0+at,\\ y=y_0+bt,\\ z=z_0+ct\\).",review:"Ôn lại mục I — Phương trình tham số"},
+    {q:"The symmetric equation of the line through \\((1,2,3)\\) with direction \\((2,-1,1)\\) is:",opts:["\\(\\dfrac{x-1}{2}=\\dfrac{y-2}{-1}=\\dfrac{z-3}{1}\\)","\\(\\dfrac{x+1}{2}=\\dfrac{y+2}{-1}=\\dfrac{z+3}{1}\\)","\\(\\dfrac{x-1}{2}=\\dfrac{y+2}{-1}=\\dfrac{z-3}{1}\\)","\\(\\dfrac{x-1}{2}=\\dfrac{y-2}{1}=\\dfrac{z-3}{1}\\)"],ans:0,exp:"Chính tắc: \\(\\dfrac{x-x_0}{a}=\\dfrac{y-y_0}{b}=\\dfrac{z-z_0}{c}\\).",review:"Ôn lại mục I — Phương trình chính tắc"}
+  ],
+  2:[
+    {q:"The distance from \\(M(1,2,3)\\) to the plane \\(2x-y+2z+1=0\\) is:",opts:["\\(\\dfrac{7}{3}\\)","\\(\\dfrac{5}{3}\\)","\\(3\\)","\\(\\dfrac{11}{3}\\)"],ans:0,exp:"\\(d=\\dfrac{|2-2+6+1|}{\\sqrt{4+1+4}}=\\dfrac{7}{3}\\).",review:"Ôn lại mục V — Khoảng cách điểm đến mặt phẳng"},
+    {q:"The distance from the origin to the plane \\(x+2y-2z+3=0\\) is:",opts:["\\(1\\)","\\(3\\)","\\(\\dfrac{1}{3}\\)","\\(\\sqrt{3}\\)"],ans:0,exp:"\\(d=\\dfrac{|3|}{\\sqrt{1+4+4}}=\\dfrac{3}{3}=1\\).",review:"Ôn lại mục V — Khoảng cách điểm đến mặt phẳng"},
+    {q:"The center of the sphere \\(x^2+y^2+z^2-4x+2y-6z+5=0\\) is:",opts:["\\((2,-1,3)\\)","\\((-2,1,-3)\\)","\\((4,-2,6)\\)","\\((2,1,3)\\)"],ans:0,exp:"Viết lại: \\((x-2)^2+(y+1)^2+(z-3)^2=9\\). Tâm \\((2;-1;3)\\).",review:"Ôn lại mục III — Tâm từ phương trình khai triển"},
+    {q:"The radius of the sphere in the previous question is:",opts:["\\(3\\)","\\(9\\)","\\(\\sqrt{5}\\)","\\(\\sqrt{13}\\)"],ans:0,exp:"\\(R^2=4+1+9-5=9\\Rightarrow R=3\\).",review:"Ôn lại mục III — Bán kính mặt cầu"},
+    {q:"The distance between parallel planes \\(x+2y-2z+1=0\\) and \\(x+2y-2z+7=0\\) is:",opts:["\\(2\\)","\\(6\\)","\\(3\\)","\\(1\\)"],ans:0,exp:"\\(d=\\dfrac{|7-1|}{\\sqrt{1+4+4}}=\\dfrac{6}{3}=2\\).",review:"Ôn lại mục V — Khoảng cách hai mặt phẳng song song"},
+    {q:"The angle between planes \\(x+y=0\\) and \\(y+z=0\\) is:",opts:["\\(60°\\)","\\(30°\\)","\\(90°\\)","\\(45°\\)"],ans:0,exp:"\\(\\cos\\varphi=\\dfrac{|1|}{\\sqrt{2}\\cdot\\sqrt{2}}=\\dfrac{1}{2}\\Rightarrow\\varphi=60°\\).",review:"Ôn lại mục V — Góc giữa hai mặt phẳng"},
+    {q:"The line \\(x=1+t,\\ y=2-t,\\ z=3t\\) meets the plane \\(x+y+z=4\\) at:",opts:["\\((4/3,5/3,1)\\)","\\((2,1,3)\\)","\\((1,2,0)\\)","\\((4/3,5/3,0)\\)"],ans:0,exp:"Thay: \\(1+t+2-t+3t=4\\Rightarrow 3+3t=4\\Rightarrow t=1/3\\). Tọa độ \\((4/3;5/3;1)\\).",review:"Ôn lại mục IV — Đường thẳng cắt mặt phẳng"},
+    {q:"Two lines with direction vectors \\((1,2,1)\\) and \\((2,4,2)\\) are:",opts:["Parallel","Perpendicular","Skew","Coincident"],ans:0,exp:"\\((2,4,2)=2(1,2,1)\\Rightarrow\\) cùng phương, hai đường song song.",review:"Ôn lại mục IV — Vị trí hai đường thẳng"},
+    {q:"The sphere with center \\((1,2,2)\\) passing through the origin has equation:",opts:["\\((x-1)^2+(y-2)^2+(z-2)^2=9\\)","\\((x-1)^2+(y-2)^2+(z-2)^2=3\\)","\\(x^2+y^2+z^2=9\\)","\\((x+1)^2+(y+2)^2+(z+2)^2=9\\)"],ans:0,exp:"\\(R^2=1^2+2^2+2^2=9\\Rightarrow(x-1)^2+(y-2)^2+(z-2)^2=9\\).",review:"Ôn lại mục III — Mặt cầu qua điểm"},
+    {q:"The distance from \\(M(2,3,4)\\) to the line through \\(A(1,1,1)\\) with direction \\((1,2,2)\\) is:",opts:["\\(\\dfrac{\\sqrt{5}}{3}\\)","\\(\\dfrac{5}{3}\\)","\\(\\sqrt{5}\\)","\\(\\dfrac{3}{\\sqrt{5}}\\)"],ans:0,exp:"\\(\\overrightarrow{AM}=(1,2,3)\\), \\(\\vec{u}=(1,2,2)\\), \\(\\overrightarrow{AM}\\times\\vec{u}=(-2,1,0)\\). \\(d=\\dfrac{\\sqrt{5}}{3}\\).",review:"Ôn lại mục V — Khoảng cách điểm đến đường thẳng"}
+  ],
+  3:[
+    {q:"A sphere with center \\((1,1,1)\\) is tangent to the plane \\(x+2y+2z=3\\). Its radius is:",opts:["\\(\\dfrac{2}{3}\\)","\\(2\\)","\\(3\\)","\\(6\\)"],ans:0,exp:"\\(R=d=\\dfrac{|1+2+2-3|}{\\sqrt{1+4+4}}=\\dfrac{2}{3}\\).",review:"Ôn lại mục V — Mặt cầu tiếp xúc mặt phẳng"},
+    {q:"The foot of the perpendicular from \\(O(0,0,0)\\) to the plane \\(x+y+z=3\\) is:",opts:["\\((1,1,1)\\)","\\((3,3,3)\\)","\\((1/3,1/3,1/3)\\)","\\((0,0,0)\\)"],ans:0,exp:"Đường vuông góc qua \\(O\\): \\((t,t,t)\\). Thay: \\(3t=3\\Rightarrow t=1\\). Chân \\((1,1,1)\\).",review:"Ôn lại mục V — Chân đường vuông góc"},
+    {q:"The projection of the point \\((1,2,3)\\) onto the \\(x\\)-axis is:",opts:["\\((1,0,0)\\)","\\((0,2,0)\\)","\\((0,0,3)\\)","\\((1,2,3)\\)"],ans:0,exp:"Hình chiếu lên \\(Ox\\) giữ nguyên \\(x\\), cho \\(y=z=0\\).",review:"Ôn lại mục V — Hình chiếu lên trục"},
+    {q:"The sphere through the origin with center on the \\(z\\)-axis and radius 5 has one possible center at:",opts:["\\((0,0,5)\\)","\\((5,0,0)\\)","\\((0,5,0)\\)","\\((1,2,3)\\)"],ans:0,exp:"\\((0-0)^2+(0-0)^2+(0-c)^2=25\\Rightarrow c=\\pm 5\\). Tâm \\((0;0;5)\\) hoặc \\((0;0;-5)\\).",review:"Ôn lại mục III — Mặt cầu có tâm trên trục"},
+    {q:"The direction vector of the intersection line of planes \\(x+y+z=1\\) and \\(x-y+2z=0\\) is:",opts:["\\((3,-1,-2)\\)","\\((1,1,1)\\)","\\((1,-1,2)\\)","\\((2,0,3)\\)"],ans:0,exp:"\\(\\vec{u}=\\vec{n}_1\\times\\vec{n}_2=(1,1,1)\\times(1,-1,2)=(3,-1,-2)\\).",review:"Ôn lại mục IV — Giao tuyến hai mặt phẳng"},
+    {q:"The angle between lines with direction vectors \\((1,0,0)\\) and \\((1,1,0)\\) is:",opts:["\\(45°\\)","\\(30°\\)","\\(60°\\)","\\(90°\\)"],ans:0,exp:"\\(\\cos\\varphi=\\dfrac{1}{1\\cdot\\sqrt{2}}=\\dfrac{\\sqrt{2}}{2}\\Rightarrow\\varphi=45°\\).",review:"Ôn lại mục V — Góc giữa hai đường thẳng"},
+    {q:"The sphere \\(x^2+y^2+z^2-2x+4y-6z+m=0\\) has radius \\(3\\). Find \\(m\\).",opts:["\\(5\\)","\\(-5\\)","\\(9\\)","\\(3\\)"],ans:0,exp:"\\(R^2=1+4+9-m=9\\Rightarrow 14-m=9\\Rightarrow m=5\\).",review:"Ôn lại mục III — Tìm tham số từ bán kính"},
+    {q:"The line through the origin perpendicular to the plane \\(2x+y-3z+5=0\\) is:",opts:["\\(x=2t,\\ y=t,\\ z=-3t\\)","\\(x=t,\\ y=2t,\\ z=-3t\\)","\\(x=2t,\\ y=-t,\\ z=3t\\)","\\(x=-2t,\\ y=-t,\\ z=3t\\)"],ans:0,exp:"Đường vuông góc với mặt phẳng nhận VTPT \\((2;1;-3)\\) làm vectơ chỉ phương.",review:"Ôn lại mục I — Đường vuông góc mặt phẳng"},
+    {q:"The distance from \\((1,2,3)\\) to the \\(x\\)-axis is:",opts:["\\(\\sqrt{13}\\)","\\(\\sqrt{5}\\)","\\(\\sqrt{10}\\)","\\(3\\)"],ans:0,exp:"\\(d=\\sqrt{2^2+3^2}=\\sqrt{13}\\).",review:"Ôn lại mục V — Khoảng cách đến trục"},
+    {q:"Two planes \\(2x-y=0\\) and \\(x+2y+z=1\\) are:",opts:["Perpendicular","Parallel","Coincident","Neither"],ans:0,exp:"\\(\\vec{n}_1\\cdot\\vec{n}_2=2\\cdot 1+(-1)\\cdot 2+0\\cdot 1=0\\Rightarrow\\) vuông góc.",review:"Ôn lại mục IV — Hai mặt phẳng vuông góc"}
+  ]
+};
+
+const letterMap=['A','B','C','D'];
+
+function renderPractice(group){
+  const container=document.getElementById('panel-'+group);
+  container.innerHTML='';
+  practiceData[group].forEach(function(item,idx){
+    const card=document.createElement('div');
+    card.className='q-card';card.id='g'+group+'q'+idx;
+    let optsHtml='';
+    item.opts.forEach(function(o,i){
+      optsHtml+='<button class="option" data-group="'+group+'" data-q="'+idx+'" data-opt="'+i+'"><span class="letter">'+letterMap[i]+'</span><span class="opt-text">'+o+'</span></button>';
+    });
+    card.innerHTML='<div class="q-head"><div class="q-num">'+(idx+1)+'</div><div class="q-text">'+item.q+'</div></div><div class="options">'+optsHtml+'</div><div class="feedback" id="fb-'+group+'-'+idx+'"></div>';
+    container.appendChild(card);
+  });
+  if(window.renderMathInElement){renderMathInElement(container,{delimiters:[{left:'\\(',right:'\\)',display:false}]});}
+}
+document.querySelectorAll('.group-tab').forEach(function(tab){
+  tab.addEventListener('click',function(){
+    document.querySelectorAll('.group-tab').forEach(function(t){t.classList.remove('active');});
+    document.querySelectorAll('.group-panel').forEach(function(p){p.classList.remove('active');});
+    tab.classList.add('active');
+    document.getElementById('panel-'+tab.dataset.group).classList.add('active');
+  });
+});
+[1,2,3].forEach(renderPractice);
+
+document.addEventListener('click',function(e){
+  const btn=e.target.closest('.option');
+  if(!btn||btn.classList.contains('disabled')) return;
+  const group=btn.dataset.group;if(!group) return;
+  const qIdx=+btn.dataset.q, optIdx=+btn.dataset.opt;
+  const card=document.getElementById('g'+group+'q'+qIdx);
+  const item=practiceData[group][qIdx];
+  const fb=document.getElementById('fb-'+group+'-'+qIdx);
+  const allOpts=card.querySelectorAll('.option');
+  allOpts.forEach(function(o){o.classList.add('disabled');});
+  allOpts[item.ans].classList.add('correct');
+  const isCorrect=optIdx===item.ans;
+  if(!isCorrect){btn.classList.add('wrong');}
+  card.classList.add(isCorrect?'correct':'wrong');
+  fb.className='feedback show '+(isCorrect?'ok':'no');
+  if(isCorrect){
+    fb.innerHTML='<strong>✅ Correct!</strong>'+item.exp+'<div class="review">💡 '+item.review+'</div>';
+    playDing();
+  } else {
+    fb.innerHTML='<strong>❌ Incorrect. Correct answer: '+letterMap[item.ans]+'</strong>'+item.exp+'<div class="review">📖 Ôn tập lại: '+item.review+'</div>';
+    playBuzz();
+  }
+  if(window.renderMathInElement){renderMathInElement(fb,{delimiters:[{left:'\\(',right:'\\)',display:false}]});}
+});
+
+/* ============ SAT DATA 3 bộ × 30 câu ============ */
+const TOPICS = {
+  LINE:"Phương trình đường thẳng", PLANE:"Phương trình mặt phẳng", SPHERE:"Phương trình mặt cầu",
+  POSITION:"Vị trí tương đối", DIST:"Khoảng cách", ANGLE:"Góc", APP:"Ứng dụng thực tế"
+};
+const TOPIC_RECOMMENDATIONS = {
+  LINE:"Ôn lại dạng tham số \\(x=x_0+at\\) và chính tắc \\(\\dfrac{x-x_0}{a}=\\dfrac{y-y_0}{b}=\\dfrac{z-z_0}{c}\\); vectơ chỉ phương qua 2 điểm.",
+  PLANE:"Nắm vững VTPT \\(\\vec{n}=(A;B;C)\\), phương trình tổng quát \\(Ax+By+Cz+D=0\\), mặt phẳng qua điểm và vuông góc vectơ, mặt phẳng qua 3 điểm.",
+  SPHERE:"Ghi nhớ \\((x-a)^2+(y-b)^2+(z-c)^2=R^2\\) và \\(x^2+y^2+z^2-2ax-2by-2cz+d=0\\); điều kiện \\(a^2+b^2+c^2-d>0\\).",
+  POSITION:"Xét vị trí bằng cách so sánh vectơ chỉ phương/pháp tuyến; dùng phép thế để tìm giao điểm; so sánh \\(d(I,(P))\\) với \\(R\\).",
+  DIST:"Công thức \\(d(M_0,(P))=\\dfrac{|Ax_0+By_0+Cz_0+D|}{\\sqrt{A^2+B^2+C^2}}\\) và \\(d(M,\\Delta)=\\dfrac{|\\overrightarrow{M_0M}\\times\\vec{u}|}{|\\vec{u}|}\\).",
+  ANGLE:"Góc hai đường: \\(\\cos\\varphi=\\dfrac{|\\vec{u}_1\\cdot\\vec{u}_2|}{|\\vec{u}_1||\\vec{u}_2|}\\). Góc hai mặt: \\(\\cos\\varphi=\\dfrac{|\\vec{n}_1\\cdot\\vec{n}_2|}{|\\vec{n}_1||\\vec{n}_2|}\\).",
+  APP:"Đọc kỹ đề, xác định đại lượng cần tính, chọn công thức phù hợp (khoảng cách, góc, giao điểm)."
+};
+
+const SAT_SETS = {
+  1:{name:"Bộ 1 — Foundations",desc:"Phương trình tham số – chính tắc của đường thẳng, VTPT và phương trình mặt phẳng, phương trình mặt cầu cơ bản, tọa độ điểm.",questions:[
+    {q:"The direction vector of the line \\(x=1+2t,\\ y=3-t,\\ z=2+4t\\) is:",opts:["\\((2,-1,4)\\)","\\((1,3,2)\\)","\\((2,1,4)\\)","\\((-1,3,-2)\\)"],ans:0,topic:"LINE",exp:"Hệ số của \\(t\\) là vectơ chỉ phương \\((2;-1;4)\\).",review:"Ôn lại mục I — Phương trình tham số"},
+    {q:"The normal vector of the plane \\(2x-y+3z-5=0\\) is:",opts:["\\((2,-1,3)\\)","\\((2,1,3)\\)","\\((-2,1,3)\\)","\\((2,-1,-3)\\)"],ans:0,topic:"PLANE",exp:"VTPT là bộ hệ số \\((A;B;C)=(2;-1;3)\\).",review:"Ôn lại mục II — Vectơ pháp tuyến"},
+    {q:"The plane with normal vector \\((1,2,3)\\) through the origin:",opts:["\\(x+2y+3z=0\\)","\\(x-2y+3z=0\\)","\\(2x+y+3z=0\\)","\\(x+2y-3z=0\\)"],ans:0,topic:"PLANE",exp:"Mặt phẳng qua \\(O\\): \\(1\\cdot x+2\\cdot y+3\\cdot z=0\\).",review:"Ôn lại mục II — Mặt phẳng qua gốc"},
+    {q:"Center of sphere \\((x-2)^2+(y+1)^2+(z-3)^2=25\\):",opts:["\\((2,-1,3)\\)","\\((-2,1,-3)\\)","\\((2,1,3)\\)","\\((2,-1,-3)\\)"],ans:0,topic:"SPHERE",exp:"Tâm \\((a;b;c)=(2;-1;3)\\).",review:"Ôn lại mục III — Tâm mặt cầu"},
+    {q:"Radius of that sphere:",opts:["\\(5\\)","\\(25\\)","\\(\\sqrt{5}\\)","\\(12.5\\)"],ans:0,topic:"SPHERE",exp:"\\(R^2=25\\Rightarrow R=5\\).",review:"Ôn lại mục III — Bán kính mặt cầu"},
+    {q:"Sphere with center \\((1,2,-1)\\) and radius 3:",opts:["\\((x-1)^2+(y-2)^2+(z+1)^2=9\\)","\\((x+1)^2+(y+2)^2+(z-1)^2=9\\)","\\((x-1)^2+(y-2)^2+(z-1)^2=9\\)","\\((x-1)^2+(y+2)^2+(z+1)^2=9\\)"],ans:0,topic:"SPHERE",exp:"\\((x-1)^2+(y-2)^2+(z+1)^2=3^2\\).",review:"Ôn lại mục III — Viết phương trình mặt cầu"},
+    {q:"Does \\((2,3,4)\\) lie on the plane \\(x+y+z-9=0\\)?",opts:["Yes","No","Cannot determine","Only approximately"],ans:0,topic:"PLANE",exp:"\\(2+3+4-9=0\\).",review:"Ôn lại mục II — Điểm thuộc mặt phẳng"},
+    {q:"Direction vector from \\(A(1,0,2)\\) to \\(B(3,4,1)\\):",opts:["\\((2,4,-1)\\)","\\((-2,-4,1)\\)","\\((4,4,3)\\)","\\((2,4,1)\\)"],ans:0,topic:"LINE",exp:"\\(\\overrightarrow{AB}=(2;4;-1)\\).",review:"Ôn lại mục I — Vectơ chỉ phương qua 2 điểm"},
+    {q:"Parametric form of the line through \\((1,2,3)\\) with direction \\((2,-1,1)\\):",opts:["\\(x=1+2t,\\ y=2-t,\\ z=3+t\\)","\\(x=1-2t,\\ y=2+t,\\ z=3-t\\)","\\(x=2+t,\\ y=-1+2t,\\ z=1+3t\\)","\\(x=1+2t,\\ y=2+t,\\ z=3+t\\)"],ans:0,topic:"LINE",exp:"\\(x=x_0+at\\), \\(y=y_0+bt\\), \\(z=z_0+ct\\).",review:"Ôn lại mục I — Phương trình tham số"},
+    {q:"Symmetric form of the same line:",opts:["\\(\\dfrac{x-1}{2}=\\dfrac{y-2}{-1}=\\dfrac{z-3}{1}\\)","\\(\\dfrac{x+1}{2}=\\dfrac{y+2}{-1}=\\dfrac{z+3}{1}\\)","\\(\\dfrac{x-1}{2}=\\dfrac{y+2}{-1}=\\dfrac{z-3}{1}\\)","\\(\\dfrac{x-1}{2}=\\dfrac{y-2}{1}=\\dfrac{z-3}{1}\\)"],ans:0,topic:"LINE",exp:"\\(\\dfrac{x-x_0}{a}=\\dfrac{y-y_0}{b}=\\dfrac{z-z_0}{c}\\).",review:"Ôn lại mục I — Phương trình chính tắc"},
+    {q:"The plane with normal \\((2,-1,2)\\) through the origin:",opts:["\\(2x-y+2z=0\\)","\\(2x+y+2z=0\\)","\\(x-2y+2z=0\\)","\\(2x-y-2z=0\\)"],ans:0,topic:"PLANE",exp:"\\(2x-y+2z=0\\).",review:"Ôn lại mục II — Mặt phẳng qua gốc"},
+    {q:"The sphere \\(x^2+y^2+z^2=9\\) has:",opts:["Center \\(O\\), radius 3","Center \\(O\\), radius 9","Center \\((3,3,3)\\), radius 3","Center \\((0,0,0)\\), radius \\(\\sqrt{3}\\)"],ans:0,topic:"SPHERE",exp:"\\(x^2+y^2+z^2=3^2\\).",review:"Ôn lại mục III — Mặt cầu tâm gốc"},
+    {q:"Direction of line \\(x=t,\\ y=2t,\\ z=-t\\):",opts:["\\((1,2,-1)\\)","\\((1,-2,1)\\)","\\((2,1,-1)\\)","\\((-1,2,1)\\)"],ans:0,topic:"LINE",exp:"Hệ số của \\(t\\) là \\((1;2;-1)\\).",review:"Ôn lại mục I — Phương trình tham số"},
+    {q:"Plane through \\((1,1,1)\\) with normal \\((1,1,1)\\):",opts:["\\(x+y+z=3\\)","\\(x+y+z=1\\)","\\(x-y+z=1\\)","\\(x+y-z=1\\)"],ans:0,topic:"PLANE",exp:"\\(1(x-1)+1(y-1)+1(z-1)=0\\Rightarrow x+y+z=3\\).",review:"Ôn lại mục II — Mặt phẳng qua điểm có VTPT"},
+    {q:"Center of sphere \\(x^2+y^2+z^2-2x-4y-6z-11=0\\):",opts:["\\((1,2,3)\\)","\\((-1,-2,-3)\\)","\\((2,4,6)\\)","\\((1,-2,3)\\)"],ans:0,topic:"SPHERE",exp:"Viết lại: \\((x-1)^2+(y-2)^2+(z-3)^2=25\\).",review:"Ôn lại mục III — Tâm từ dạng khai triển"},
+    {q:"Radius of that sphere:",opts:["\\(5\\)","\\(25\\)","\\(\\sqrt{11}\\)","\\(11\\)"],ans:0,topic:"SPHERE",exp:"\\(R^2=1+4+9+11=25\\Rightarrow R=5\\).",review:"Ôn lại mục III — Bán kính"},
+    {q:"Line through origin with direction \\((1,1,1)\\):",opts:["\\(x=t,\\ y=t,\\ z=t\\)","\\(x=t,\\ y=t,\\ z=1\\)","\\(x=1,\\ y=t,\\ z=t\\)","\\(x=t,\\ y=1,\\ z=t\\)"],ans:0,topic:"LINE",exp:"\\(x=0+t,\\ y=0+t,\\ z=0+t\\).",review:"Ôn lại mục I — Đường thẳng qua gốc"},
+    {q:"Does \\((1,1,1)\\) lie on the line \\(x=t,\\ y=t,\\ z=t\\)?",opts:["Yes","No","Cannot determine","Only if \\(t=0\\)"],ans:0,topic:"LINE",exp:"\\(t=1\\) cho điểm \\((1;1;1)\\).",review:"Ôn lại mục I — Điểm thuộc đường"},
+    {q:"The plane \\(z=3\\) is parallel to:",opts:["\\(xy\\)-plane","\\(xz\\)-plane","\\(yz\\)-plane","the \\(z\\)-axis"],ans:0,topic:"PLANE",exp:"\\(z=\\text{const}\\) song song mặt phẳng \\(Oxy\\).",review:"Ôn lại mục II — Mặt phẳng song song mặt tọa độ"},
+    {q:"Plane through \\((1,0,0),(0,2,0),(0,0,3)\\):",opts:["\\(6x+3y+2z=6\\)","\\(2x+3y+6z=6\\)","\\(3x+2y+6z=6\\)","\\(6x+2y+3z=6\\)"],ans:0,topic:"PLANE",exp:"\\(\\dfrac{x}{1}+\\dfrac{y}{2}+\\dfrac{z}{3}=1\\), nhân 6: \\(6x+3y+2z=6\\).",review:"Ôn lại mục II — Mặt phẳng theo đoạn chắn"},
+    {q:"Sphere with diameter endpoints \\((0,0,0)\\) and \\((2,4,6)\\) has center:",opts:["\\((1,2,3)\\)","\\((2,4,6)\\)","\\((1,1,1)\\)","\\((0,0,0)\\)"],ans:0,topic:"SPHERE",exp:"Tâm là trung điểm \\((1;2;3)\\).",review:"Ôn lại mục III — Mặt cầu đường kính"},
+    {q:"Direction from origin to \\((2,-3,6)\\):",opts:["\\((2,-3,6)\\)","\\((-2,3,-6)\\)","\\((3,-2,6)\\)","\\((6,-3,2)\\)"],ans:0,topic:"LINE",exp:"\\(\\overrightarrow{OM}=(2;-3;6)\\).",review:"Ôn lại mục I — Vectơ chỉ phương"},
+    {q:"Distance from origin to point \\((2,3,6)\\):",opts:["\\(7\\)","\\(\\sqrt{41}\\)","\\(11\\)","\\(\\sqrt{45}\\)"],ans:0,topic:"DIST",exp:"\\(\\sqrt{4+9+36}=7\\).",review:"Ôn lại mục V — Khoảng cách"},
+    {q:"The plane \\(x=2\\) is parallel to:",opts:["\\(yz\\)-plane","\\(xy\\)-plane","\\(xz\\)-plane","the \\(x\\)-axis"],ans:0,topic:"PLANE",exp:"\\(x=\\text{const}\\) song song mặt phẳng \\(Oyz\\).",review:"Ôn lại mục II — Mặt phẳng song song"},
+    {q:"Line through \\((1,2,3)\\) parallel to \\((1,0,-1)\\):",opts:["\\(x=1+t,\\ y=2,\\ z=3-t\\)","\\(x=1+t,\\ y=2+t,\\ z=3-t\\)","\\(x=1,\\ y=2+t,\\ z=3-t\\)","\\(x=1+t,\\ y=2-t,\\ z=3\\)"],ans:0,topic:"LINE",exp:"Hệ số \\(b=0\\) nên \\(y=2\\) không đổi.",review:"Ôn lại mục I — Phương trình tham số"},
+    {q:"Sphere with center at origin and radius \\(\\sqrt{7}\\):",opts:["\\(x^2+y^2+z^2=7\\)","\\(x^2+y^2+z^2=\\sqrt{7}\\)","\\(x^2+y^2+z^2=49\\)","\\((x-1)^2+(y-1)^2+(z-1)^2=7\\)"],ans:0,topic:"SPHERE",exp:"\\(R^2=7\\).",review:"Ôn lại mục III — Mặt cầu tâm gốc"},
+    {q:"Normal vector of \\(3x-y+2z=5\\):",opts:["\\((3,-1,2)\\)","\\((3,1,2)\\)","\\((-3,1,2)\\)","\\((5,5,5)\\)"],ans:0,topic:"PLANE",exp:"\\((A;B;C)=(3;-1;2)\\).",review:"Ôn lại mục II — Vectơ pháp tuyến"},
+    {q:"Which point lies on the plane \\(x+y+z=6\\)?",opts:["\\((1,2,3)\\)","\\((1,1,1)\\)","\\((2,2,3)\\)","\\((3,3,3)\\)"],ans:0,topic:"PLANE",exp:"\\(1+2+3=6\\).",review:"Ôn lại mục II — Điểm thuộc mặt phẳng"},
+    {q:"Center of the sphere \\((x-1)^2+y^2+z^2=4\\):",opts:["\\((1,0,0)\\)","\\((-1,0,0)\\)","\\((1,1,1)\\)","\\((0,0,0)\\)"],ans:0,topic:"SPHERE",exp:"Tâm \\((1;0;0)\\).",review:"Ôn lại mục III — Tâm mặt cầu"},
+    {q:"Radius of \\(x^2+y^2+z^2=16\\):",opts:["\\(4\\)","\\(16\\)","\\(8\\)","\\(\\sqrt{16}\\)"],ans:0,topic:"SPHERE",exp:"\\(R^2=16\\Rightarrow R=4\\).",review:"Ôn lại mục III — Bán kính"}
+  ]},
+  2:{name:"Bộ 2 — Intermediate",desc:"Khoảng cách điểm – mặt phẳng, khoảng cách hai mặt phẳng song song, góc giữa hai mặt phẳng – hai đường thẳng, vị trí tương đối, giao điểm đường – mặt.",questions:[
+    {q:"Distance from \\((1,2,3)\\) to the plane \\(2x-y+2z+1=0\\):",opts:["\\(7/3\\)","\\(5/3\\)","\\(3\\)","\\(11/3\\)"],ans:0,topic:"DIST",exp:"\\(\\dfrac{|2-2+6+1|}{3}=\\dfrac{7}{3}\\).",review:"Ôn lại mục V — Khoảng cách điểm–mặt"},
+    {q:"Distance from the origin to \\(x+2y-2z+3=0\\):",opts:["\\(1\\)","\\(3\\)","\\(1/3\\)","\\(\\sqrt{3}\\)"],ans:0,topic:"DIST",exp:"\\(\\dfrac{3}{3}=1\\).",review:"Ôn lại mục V — Khoảng cách điểm–mặt"},
+    {q:"Center of \\(x^2+y^2+z^2-4x+2y-6z+5=0\\):",opts:["\\((2,-1,3)\\)","\\((-2,1,-3)\\)","\\((4,-2,6)\\)","\\((2,1,3)\\)"],ans:0,topic:"SPHERE",exp:"\\((x-2)^2+(y+1)^2+(z-3)^2=9\\).",review:"Ôn lại mục III — Tâm mặt cầu"},
+    {q:"Radius of that sphere:",opts:["\\(3\\)","\\(9\\)","\\(\\sqrt{5}\\)","\\(\\sqrt{13}\\)"],ans:0,topic:"SPHERE",exp:"\\(R^2=9\\Rightarrow R=3\\).",review:"Ôn lại mục III — Bán kính"},
+    {q:"Distance between \\(x+2y-2z+1=0\\) and \\(x+2y-2z+7=0\\):",opts:["\\(2\\)","\\(6\\)","\\(3\\)","\\(1\\)"],ans:0,topic:"DIST",exp:"\\(\\dfrac{6}{3}=2\\).",review:"Ôn lại mục V — Khoảng cách hai mặt song song"},
+    {q:"Angle between planes \\(x+y=0\\) and \\(y+z=0\\):",opts:["\\(60°\\)","\\(30°\\)","\\(90°\\)","\\(45°\\)"],ans:0,topic:"ANGLE",exp:"\\(\\cos\\varphi=\\dfrac{1}{\\sqrt{2}\\cdot\\sqrt{2}}=\\dfrac{1}{2}\\).",review:"Ôn lại mục V — Góc hai mặt phẳng"},
+    {q:"Line \\(x=1+t,\\ y=2-t,\\ z=3t\\) meets \\(x+y+z=4\\) at:",opts:["\\((4/3,5/3,1)\\)","\\((2,1,3)\\)","\\((1,2,0)\\)","\\((4/3,5/3,0)\\)"],ans:0,topic:"POSITION",exp:"\\(3+3t=4\\Rightarrow t=1/3\\).",review:"Ôn lại mục IV — Đường cắt mặt"},
+    {q:"Lines with directions \\((1,2,1)\\) and \\((2,4,2)\\):",opts:["Parallel","Perpendicular","Skew","Coincident"],ans:0,topic:"POSITION",exp:"Cùng phương → song song.",review:"Ôn lại mục IV — Vị trí hai đường thẳng"},
+    {q:"Sphere through origin with center \\((1,2,2)\\):",opts:["\\((x-1)^2+(y-2)^2+(z-2)^2=9\\)","\\((x-1)^2+(y-2)^2+(z-2)^2=3\\)","\\(x^2+y^2+z^2=9\\)","\\((x+1)^2+(y+2)^2+(z+2)^2=9\\)"],ans:0,topic:"SPHERE",exp:"\\(R^2=1+4+4=9\\).",review:"Ôn lại mục III — Mặt cầu qua điểm"},
+    {q:"Distance from \\((2,3,4)\\) to line through \\((1,1,1)\\) with direction \\((1,2,2)\\):",opts:["\\(\\sqrt{5}/3\\)","\\(5/3\\)","\\(\\sqrt{5}\\)","\\(3/\\sqrt{5}\\)"],ans:0,topic:"DIST",exp:"\\(\\overrightarrow{AM}=(1,2,3)\\), \\(\\overrightarrow{AM}\\times\\vec{u}=(-2,1,0)\\), \\(d=\\sqrt{5}/3\\).",review:"Ôn lại mục V — Khoảng cách điểm–đường"},
+    {q:"Distance between skew lines \\(L_1\\): through \\(O\\) direction \\((1,0,0)\\) and \\(L_2\\): through \\((0,1,1)\\) direction \\((0,1,0)\\):",opts:["\\(1\\)","\\(\\sqrt{2}\\)","\\(2\\)","\\(\\sqrt{3}\\)"],ans:0,topic:"DIST",exp:"\\(\\vec{u}_1\\times\\vec{u}_2=(0,0,1)\\), \\(\\overrightarrow{O_1O_2}=(0,1,1)\\), \\(d=|(0,0,1)\\cdot(0,1,1)|=1\\).",review:"Ôn lại mục V — Khoảng cách hai đường chéo nhau"},
+    {q:"Direction of the line of intersection of \\(x+y+z=1\\) and \\(x-y+2z=0\\):",opts:["\\((3,-1,-2)\\)","\\((1,1,1)\\)","\\((1,-1,2)\\)","\\((2,0,3)\\)"],ans:0,topic:"POSITION",exp:"\\(\\vec{n}_1\\times\\vec{n}_2=(3,-1,-2)\\).",review:"Ôn lại mục IV — Giao tuyến hai mặt phẳng"},
+    {q:"Angle between lines with directions \\((1,0,0)\\) and \\((1,1,0)\\):",opts:["\\(45°\\)","\\(30°\\)","\\(60°\\)","\\(90°\\)"],ans:0,topic:"ANGLE",exp:"\\(\\cos\\varphi=\\dfrac{1}{\\sqrt{2}}=\\dfrac{\\sqrt{2}}{2}\\).",review:"Ôn lại mục V — Góc hai đường"},
+    {q:"Line \\(x=t,\\ y=t,\\ z=t\\) relative to plane \\(x+y+z=3\\):",opts:["Intersects at a point","Parallel","Contained in plane","Perpendicular only"],ans:0,topic:"POSITION",exp:"Thay: \\(3t=3\\Rightarrow t=1\\), cắt tại \\((1;1;1)\\).",review:"Ôn lại mục IV — Đường cắt mặt phẳng"},
+    {q:"Distance from \\((1,1,1)\\) to plane \\(x+y+z=3\\):",opts:["\\(0\\)","\\(\\sqrt{3}\\)","\\(1\\)","\\(1/\\sqrt{3}\\)"],ans:0,topic:"DIST",exp:"\\(\\dfrac{|1+1+1-3|}{\\sqrt{3}}=0\\), điểm thuộc mặt phẳng.",review:"Ôn lại mục V — Khoảng cách điểm–mặt"},
+    {q:"Sphere center \\((1,2,3)\\), radius 5 and plane \\(x+y+z=0\\):",opts:["Intersects in a circle","Tangent to plane","No intersection","Contains the plane"],ans:0,topic:"POSITION",exp:"\\(d=\\dfrac{6}{\\sqrt{3}}=2\\sqrt{3}\\approx 3.46<5\\) → cắt theo đường tròn.",review:"Ôn lại mục IV — Mặt phẳng và mặt cầu"},
+    {q:"Line through origin perpendicular to \\(2x+y-3z+5=0\\):",opts:["\\(x=2t,\\ y=t,\\ z=-3t\\)","\\(x=t,\\ y=2t,\\ z=-3t\\)","\\(x=2t,\\ y=-t,\\ z=3t\\)","\\(x=-2t,\\ y=-t,\\ z=3t\\)"],ans:0,topic:"LINE",exp:"Vectơ chỉ phương = VTPT \\((2;1;-3)\\).",review:"Ôn lại mục I — Đường vuông góc mặt phẳng"},
+    {q:"Sphere \\(x^2+y^2+z^2-2x+4y-6z+m=0\\) has radius 3. Find \\(m\\):",opts:["\\(5\\)","\\(-5\\)","\\(9\\)","\\(3\\)"],ans:0,topic:"SPHERE",exp:"\\(1+4+9-m=9\\Rightarrow m=5\\).",review:"Ôn lại mục III — Tìm tham số"},
+    {q:"Distance from \\((1,2,3)\\) to \\(x\\)-axis:",opts:["\\(\\sqrt{13}\\)","\\(\\sqrt{5}\\)","\\(\\sqrt{10}\\)","\\(3\\)"],ans:0,topic:"DIST",exp:"\\(\\sqrt{2^2+3^2}=\\sqrt{13}\\).",review:"Ôn lại mục V — Khoảng cách đến trục"},
+    {q:"Angle between line with direction \\((1,1,1)\\) and plane \\(x+y+z=1\\):",opts:["\\(90°\\)","\\(45°\\)","\\(60°\\)","\\(30°\\)"],ans:0,topic:"ANGLE",exp:"Đường vuông góc với mặt (vectơ chỉ phương song song VTPT) → góc 90°.",review:"Ôn lại mục V — Góc đường–mặt"},
+    {q:"Line \\(x=1+t,\\ y=2+t,\\ z=3+t\\) meets \\(x+y+z=6\\) at:",opts:["\\((1,2,3)\\)","\\((2,3,4)\\)","\\((0,1,2)\\)","\\((3,4,5)\\)"],ans:0,topic:"POSITION",exp:"\\(1+t+2+t+3+t=6\\Rightarrow 3t=0\\Rightarrow t=0\\).",review:"Ôn lại mục IV — Đường cắt mặt phẳng"},
+    {q:"Distance from \\((1,0,0)\\) to plane \\(x=2\\):",opts:["\\(1\\)","\\(2\\)","\\(0\\)","\\(\\sqrt{2}\\)"],ans:0,topic:"DIST",exp:"\\(|1-2|=1\\).",review:"Ôn lại mục V — Khoảng cách điểm–mặt"},
+    {q:"Center of \\(x^2+y^2+z^2-2x+2y-4z+2=0\\):",opts:["\\((1,-1,2)\\)","\\((-1,1,-2)\\)","\\((2,-2,4)\\)","\\((1,1,2)\\)"],ans:0,topic:"SPHERE",exp:"\\((x-1)^2+(y+1)^2+(z-2)^2=4\\).",review:"Ôn lại mục III — Tâm mặt cầu"},
+    {q:"Planes \\(2x-y+z=0\\) and \\(x+y+z=1\\) are:",opts:["Not perpendicular","Perpendicular","Parallel","Coincident"],ans:0,topic:"POSITION",exp:"\\(\\vec{n}_1\\cdot\\vec{n}_2=2-1+1=2\\neq 0\\).",review:"Ôn lại mục IV — Vị trí hai mặt phẳng"},
+    {q:"Point on line \\(x=1+2t,\\ y=3-t,\\ z=t\\) at \\(t=1\\):",opts:["\\((3,2,1)\\)","\\((1,3,0)\\)","\\((2,-1,1)\\)","\\((3,3,1)\\)"],ans:0,topic:"LINE",exp:"\\(x=3,\\ y=2,\\ z=1\\).",review:"Ôn lại mục I — Điểm trên đường thẳng"},
+    {q:"Plane through \\((1,2,3)\\) with normal \\((2,-1,2)\\):",opts:["\\(2x-y+2z-6=0\\)","\\(2x-y+2z+6=0\\)","\\(x-2y+2z-6=0\\)","\\(2x+y+2z-6=0\\)"],ans:0,topic:"PLANE",exp:"\\(2(x-1)-(y-2)+2(z-3)=0\\).",review:"Ôn lại mục II — Mặt phẳng qua điểm"},
+    {q:"Radius of sphere with center \\((1,2,3)\\) passing through the origin:",opts:["\\(\\sqrt{14}\\)","\\(14\\)","\\(7\\)","\\(\\sqrt{7}\\)"],ans:0,topic:"SPHERE",exp:"\\(R=\\sqrt{1+4+9}=\\sqrt{14}\\).",review:"Ôn lại mục III — Bán kính qua điểm"},
+    {q:"Center of \\(x^2+y^2+z^2+6x-2y+4z=0\\):",opts:["\\((-3,1,-2)\\)","\\((3,-1,2)\\)","\\((6,-2,4)\\)","\\((-6,2,-4)\\)"],ans:0,topic:"SPHERE",exp:"\\((x+3)^2+(y-1)^2+(z+2)^2=14\\).",review:"Ôn lại mục III — Tâm mặt cầu"},
+    {q:"The plane \\(y=1\\) is parallel to:",opts:["\\(xz\\)-plane","\\(xy\\)-plane","\\(yz\\)-plane","\\(y\\)-axis"],ans:0,topic:"PLANE",exp:"\\(y=\\text{const}\\) song song \\(Oxz\\).",review:"Ôn lại mục II — Mặt phẳng song song"},
+    {q:"Direction from \\((1,0,0)\\) to \\((0,1,0)\\):",opts:["\\((-1,1,0)\\)","\\((1,-1,0)\\)","\\((1,1,0)\\)","\\((0,0,1)\\)"],ans:0,topic:"LINE",exp:"\\((0-1;1-0;0-0)=(-1;1;0)\\).",review:"Ôn lại mục I — Vectơ chỉ phương"}
+  ]},
+  3:{name:"Bộ 3 — Advanced",desc:"Chân đường vuông góc, hình chiếu, khoảng cách đường chéo nhau, mặt cầu tiếp xúc, giao tuyến, ứng dụng tổng hợp.",questions:[
+    {q:"Sphere center \\((1,1,1)\\) tangent to \\(x+2y+2z=3\\) has radius:",opts:["\\(2/3\\)","\\(2\\)","\\(3\\)","\\(6\\)"],ans:0,topic:"SPHERE",exp:"\\(R=\\dfrac{|1+2+2-3|}{3}=\\dfrac{2}{3}\\).",review:"Ôn lại mục V — Mặt cầu tiếp xúc mặt phẳng"},
+    {q:"Foot of perpendicular from \\(O\\) to \\(x+y+z=3\\):",opts:["\\((1,1,1)\\)","\\((3,3,3)\\)","\\((1/3,1/3,1/3)\\)","\\((0,0,0)\\)"],ans:0,topic:"DIST",exp:"Đường \\((t,t,t)\\), thay vào \\(3t=3\\Rightarrow t=1\\).",review:"Ôn lại mục V — Chân đường vuông góc"},
+    {q:"Projection of \\((1,2,3)\\) onto the \\(x\\)-axis:",opts:["\\((1,0,0)\\)","\\((0,2,0)\\)","\\((0,0,3)\\)","\\((1,2,3)\\)"],ans:0,topic:"DIST",exp:"Chiếu lên \\(Ox\\): giữ \\(x\\), đặt \\(y=z=0\\).",review:"Ôn lại mục V — Hình chiếu lên trục"},
+    {q:"Sphere through origin with center on \\(z\\)-axis, radius 5. One possible center:",opts:["\\((0,0,5)\\)","\\((5,0,0)\\)","\\((0,5,0)\\)","\\((1,2,3)\\)"],ans:0,topic:"SPHERE",exp:"\\(c^2=25\\Rightarrow c=\\pm 5\\).",review:"Ôn lại mục III — Mặt cầu tâm trên trục"},
+    {q:"Direction of intersection line of \\(x+y+z=1\\) and \\(x-y+2z=0\\):",opts:["\\((3,-1,-2)\\)","\\((1,1,1)\\)","\\((1,-1,2)\\)","\\((2,0,3)\\)"],ans:0,topic:"POSITION",exp:"\\(\\vec{n}_1\\times\\vec{n}_2=(3,-1,-2)\\).",review:"Ôn lại mục IV — Giao tuyến hai mặt"},
+    {q:"Angle between lines with directions \\((1,0,0)\\) and \\((1,1,0)\\):",opts:["\\(45°\\)","\\(30°\\)","\\(60°\\)","\\(90°\\)"],ans:0,topic:"ANGLE",exp:"\\(\\cos\\varphi=\\sqrt{2}/2\\).",review:"Ôn lại mục V — Góc hai đường"},
+    {q:"Sphere \\(x^2+y^2+z^2-2x+4y-6z+m=0\\) has radius 3. \\(m=\\)?",opts:["\\(5\\)","\\(-5\\)","\\(9\\)","\\(3\\)"],ans:0,topic:"SPHERE",exp:"\\(14-m=9\\Rightarrow m=5\\).",review:"Ôn lại mục III — Tìm tham số"},
+    {q:"Line through origin perpendicular to \\(2x+y-3z+5=0\\):",opts:["\\(x=2t,\\ y=t,\\ z=-3t\\)","\\(x=t,\\ y=2t,\\ z=-3t\\)","\\(x=2t,\\ y=-t,\\ z=3t\\)","\\(x=-2t,\\ y=-t,\\ z=3t\\)"],ans:0,topic:"LINE",exp:"Vec tơ chỉ phương = VTPT.",review:"Ôn lại mục I — Đường vuông góc mặt phẳng"},
+    {q:"Distance from \\((1,2,3)\\) to the \\(x\\)-axis:",opts:["\\(\\sqrt{13}\\)","\\(\\sqrt{5}\\)","\\(\\sqrt{10}\\)","\\(3\\)"],ans:0,topic:"DIST",exp:"\\(\\sqrt{4+9}=\\sqrt{13}\\).",review:"Ôn lại mục V — Khoảng cách đến trục"},
+    {q:"Planes \\(2x-y=0\\) and \\(x+2y+z=1\\):",opts:["Perpendicular","Parallel","Coincident","Neither"],ans:0,topic:"POSITION",exp:"\\(\\vec{n}_1\\cdot\\vec{n}_2=0\\).",review:"Ôn lại mục IV — Vị trí hai mặt phẳng"},
+    {q:"Distance from \\((1,2,3)\\) to the line \\(x=y=z\\):",opts:["\\(\\sqrt{2}\\)","\\(\\sqrt{3}\\)","\\(\\sqrt{6}\\)","\\(2\\)"],ans:0,topic:"DIST",exp:"\\(\\vec{v}=(1,2,3)\\), \\(\\vec{u}=(1,1,1)\\), \\(\\vec{v}\\times\\vec{u}=(-1,2,-1)\\), \\(|\\times|=\\sqrt{6}\\), \\(|\\vec{u}|=\\sqrt{3}\\), \\(d=\\sqrt{2}\\).",review:"Ôn lại mục V — Khoảng cách điểm–đường"},
+    {q:"Distance between planes \\(x-y+2z=1\\) and \\(x-y+2z=5\\):",opts:["\\(\\dfrac{2\\sqrt{6}}{3}\\)","\\(\\dfrac{4}{\\sqrt{6}}\\)","\\(2\\)","\\(4\\)"],ans:0,topic:"DIST",exp:"\\(d=\\dfrac{|5-1|}{\\sqrt{1+1+4}}=\\dfrac{4}{\\sqrt{6}}=\\dfrac{2\\sqrt{6}}{3}\\).",review:"Ôn lại mục V — Khoảng cách hai mặt song song"},
+    {q:"Foot of perpendicular from \\((1,1,1)\\) to \\(x+y+z=6\\):",opts:["\\((2,2,2)\\)","\\((1,1,1)\\)","\\((3,3,3)\\)","\\((1/3,1/3,1/3)\\)"],ans:0,topic:"DIST",exp:"Đường \\((1+t,1+t,1+t)\\), thay: \\(3+3t=6\\Rightarrow t=1\\).",review:"Ôn lại mục V — Chân đường vuông góc"},
+    {q:"Sphere \\(x^2+y^2+z^2+2x-4y+6z+m=0\\) has radius 5. \\(m=\\)?",opts:["\\(-11\\)","\\(11\\)","\\(25\\)","\\(-5\\)"],ans:0,topic:"SPHERE",exp:"\\(1+4+9-m=25\\Rightarrow m=-11\\).",review:"Ôn lại mục III — Tìm tham số"},
+    {q:"Distance between skew lines \\(L_1\\): through \\(O\\) dir \\((1,0,0)\\) and \\(L_2\\): through \\((0,1,1)\\) dir \\((0,1,0)\\):",opts:["\\(1\\)","\\(2\\)","\\(\\sqrt{2}\\)","\\(\\sqrt{3}\\)"],ans:0,topic:"DIST",exp:"\\(d=|(0,0,1)\\cdot(0,1,1)|=1\\).",review:"Ôn lại mục V — Hai đường chéo nhau"},
+    {q:"Direction perpendicular to both \\((1,0,0)\\) and \\((0,1,0)\\):",opts:["\\((0,0,1)\\)","\\((1,1,0)\\)","\\((1,0,1)\\)","\\((0,1,1)\\)"],ans:0,topic:"LINE",exp:"Tích có hướng \\((0;0;1)\\).",review:"Ôn lại mục I — Vectơ chỉ phương vuông góc hai đường"},
+    {q:"Line \\(x=1+t,\\ y=1+2t,\\ z=1+3t\\) meets \\(2x-y+z=2\\) at:",opts:["\\((1,1,1)\\)","\\((2,3,4)\\)","\\((0,-1,-2)\\)","\\((3,5,7)\\)"],ans:0,topic:"POSITION",exp:"\\(2(1+t)-(1+2t)+(1+3t)=2\\Rightarrow 2+3t=2\\Rightarrow t=0\\).",review:"Ôn lại mục IV — Đường cắt mặt phẳng"},
+    {q:"Sphere center \\((1,2,3)\\) through origin:",opts:["\\((x-1)^2+(y-2)^2+(z-3)^2=14\\)","\\(x^2+y^2+z^2=14\\)","\\((x-1)^2+(y-2)^2+(z-3)^2=6\\)","\\((x+1)^2+(y+2)^2+(z+3)^2=14\\)"],ans:0,topic:"SPHERE",exp:"\\(R^2=1+4+9=14\\).",review:"Ôn lại mục III — Mặt cầu qua điểm"},
+    {q:"Distance from origin to line through \\((1,0,0)\\) direction \\((0,1,0)\\):",opts:["\\(1\\)","\\(\\sqrt{2}\\)","\\(0\\)","\\(2\\)"],ans:0,topic:"DIST",exp:"\\(\\overrightarrow{M_0O}=(-1,0,0)\\), \\(\\vec{u}=(0,1,0)\\), \\(\\times=(0,0,-1)\\), \\(d=1\\).",review:"Ôn lại mục V — Khoảng cách điểm–đường"},
+    {q:"If \\(\\vec{n}=(1,1,1)\\) and line direction \\(\\vec{u}=(1,0,0)\\), then \\(\\sin\\theta\\) (line–plane) is:",opts:["\\(1/\\sqrt{3}\\)","\\(1/2\\)","\\(\\sqrt{2}/2\\)","\\(1\\)"],ans:0,topic:"ANGLE",exp:"\\(\\sin\\theta=\\dfrac{|\\vec{n}\\cdot\\vec{u}|}{|\\vec{n}||\\vec{u}|}=\\dfrac{1}{\\sqrt{3}}\\).",review:"Ôn lại mục V — Góc đường–mặt"},
+    {q:"Planes \\(2x-y+z=0\\) and \\(x+2y=1\\):",opts:["Perpendicular","Parallel","Coincident","Neither"],ans:0,topic:"POSITION",exp:"\\(2\\cdot 1+(-1)\\cdot 2+1\\cdot 0=0\\).",review:"Ôn lại mục IV — Vuông góc"},
+    {q:"Distance from \\((1,0,0)\\) to plane \\(x=3\\):",opts:["\\(2\\)","\\(3\\)","\\(1\\)","\\(\\sqrt{2}\\)"],ans:0,topic:"DIST",exp:"\\(|1-3|=2\\).",review:"Ôn lại mục V — Khoảng cách"},
+    {q:"Foot of perpendicular from \\(O\\) to \\(x+2y+2z=3\\):",opts:["\\((1/3,2/3,2/3)\\)","\\((1,2,2)\\)","\\((3,6,6)\\)","\\((1/3,1/3,1/3)\\)"],ans:0,topic:"DIST",exp:"Đường \\((t,2t,2t)\\), \\(t+4t+4t=3\\Rightarrow t=1/3\\).",review:"Ôn lại mục V — Chân đường vuông góc"},
+    {q:"Radius of sphere \\(x^2+y^2+z^2-4x+2y+6z-2=0\\):",opts:["\\(4\\)","\\(16\\)","\\(\\sqrt{2}\\)","\\(2\\)"],ans:0,topic:"SPHERE",exp:"\\(R^2=4+1+9+2=16\\Rightarrow R=4\\).",review:"Ôn lại mục III — Bán kính"},
+    {q:"Distance from \\((1,2,3)\\) to \\((4,6,3)\\):",opts:["\\(5\\)","\\(\\sqrt{13}\\)","\\(\\sqrt{29}\\)","\\(7\\)"],ans:0,topic:"DIST",exp:"\\(\\sqrt{9+16+0}=5\\).",review:"Ôn lại mục V — Khoảng cách hai điểm"},
+    {q:"Angle between lines with directions \\((1,1,0)\\) and \\((1,0,1)\\):",opts:["\\(60°\\)","\\(30°\\)","\\(45°\\)","\\(90°\\)"],ans:0,topic:"ANGLE",exp:"\\(\\cos\\varphi=\\dfrac{1}{\\sqrt{2}\\cdot\\sqrt{2}}=\\dfrac{1}{2}\\).",review:"Ôn lại mục V — Góc hai đường"},
+    {q:"Sphere with center at origin passing through \\((1,1,1)\\) has:",opts:["\\(R=\\sqrt{3}\\)","\\(R=3\\)","\\(R=1\\)","\\(R=\\sqrt{2}\\)"],ans:0,topic:"SPHERE",exp:"\\(R=\\sqrt{1+1+1}=\\sqrt{3}\\).",review:"Ôn lại mục III — Bán kính"},
+    {q:"Distance between planes \\(x-y+2z=1\\) and \\(x-y+2z=5\\):",opts:["\\(\\dfrac{2\\sqrt{6}}{3}\\)","\\(4\\)","\\(2\\)","\\(\\sqrt{6}\\)"],ans:0,topic:"DIST",exp:"\\(d=\\dfrac{4}{\\sqrt{6}}=\\dfrac{2\\sqrt{6}}{3}\\).",review:"Ôn lại mục V — Khoảng cách hai mặt"},
+    {q:"Sphere center \\((1,2,3)\\) radius 3 and plane \\(x+y+z=6\\):",opts:["Plane passes through center","Tangent to plane","No intersection","Plane contains sphere"],ans:0,topic:"POSITION",exp:"\\(d=\\dfrac{|1+2+3-6|}{\\sqrt{3}}=0\\), mặt phẳng qua tâm.",review:"Ôn lại mục IV — Mặt cầu và mặt phẳng"},
+    {q:"Line through \\((1,2,3)\\) perpendicular to plane \\(2x-y+z=5\\) has direction:",opts:["\\((2,-1,1)\\)","\\((1,2,3)\\)","\\((2,1,-1)\\)","\\((-2,1,1)\\)"],ans:0,topic:"LINE",exp:"Vec tơ chỉ phương = VTPT \\((2;-1;1)\\).",review:"Ôn lại mục I — Đường vuông góc mặt phẳng"}
+  ]}
+};
+
+/* ============ STATE ============ */
+const TEST_DURATION = 45 * 60;
+let testState = null;
+let testTimerInterval = null;
+let currentScoreId = null;
+
+/* ============ LEADERBOARD ============ */
+function saveScoreToLocalStorage(scoreData){
+  try {
+    const today = new Date().toLocaleDateString('vi-VN');
+    const key = 'sat_leaderboard_' + today;
+    let board = JSON.parse(localStorage.getItem(key) || '[]');
+    board.push(scoreData);
+    board.sort(function(a,b){ if(b.correct !== a.correct) return b.correct - a.correct; return a.timeUsed - b.timeUsed; });
+    localStorage.setItem(key, JSON.stringify(board));
+  } catch(e){ console.error('Lỗi lưu bảng xếp hạng', e); }
+}
+function getLeaderboardHTML(){
+  try {
+    const today = new Date().toLocaleDateString('vi-VN');
+    const key = 'sat_leaderboard_' + today;
+    const board = JSON.parse(localStorage.getItem(key) || '[]');
+    if(board.length === 0) return '';
+    const fmtTime = function(sec){ return String(Math.floor(sec/60)).padStart(2,'0')+':'+String(sec%60).padStart(2,'0'); };
+    let html = '<div class="result-section-title"><span class="icon">🏆</span> Bảng xếp hạng hôm nay ('+today+')</div><div style="overflow-x:auto;margin-bottom:22px;"><table class="topic-table"><thead><tr><th style="text-align:center">Hạng</th><th style="text-align:center">Bộ đề</th><th style="text-align:center">Kết quả</th><th style="text-align:center">Thời gian</th></tr></thead><tbody>';
+    board.slice(0,10).forEach(function(item,index){
+      const medal = index===0?'🥇':index===1?'🥈':index===2?'🥉':(index+1);
+      const isCurrent = (item.id === currentScoreId);
+      html += '<tr style="'+(isCurrent?'background:#eaf7eb;font-weight:bold;border-left:3px solid #4CAF50':'')+'"><td style="text-align:center;font-size:16px;">'+medal+'</td><td style="text-align:center">Bộ '+item.setNum+'</td><td style="text-align:center;color:'+(item.pct>=80?'#4CAF50':'#1B3A6B')+';font-weight:800;">'+item.correct+'/'+item.total+' ('+item.pct+'%)</td><td style="text-align:center">'+fmtTime(item.timeUsed)+'</td></tr>';
+    });
+    return html + '</tbody></table></div>';
+  } catch(e){ return ''; }
+}
+
+/* ============ RENDER SET SELECTOR ============ */
+function renderSatSetSelector(){
+  const c = document.getElementById('satSetSelector');
+  c.innerHTML = '';
+  Object.keys(SAT_SETS).forEach(function(k){
+    const s = SAT_SETS[k];
+    const card = document.createElement('div');
+    card.className = 'set-card';
+    card.onclick = function(){ startSetTest(parseInt(k)); };
+    card.innerHTML = '<div class="set-badge">BỘ '+k+'</div><h4>'+s.name+'</h4><p>'+s.desc+'</p><div class="set-meta"><span><strong>30</strong> câu</span><span><strong>45:00</strong> phút</span><span><strong>A–D</strong></span></div><div class="set-start">▶ Bắt đầu làm bài →</div>';
+    c.appendChild(card);
+  });
+}
+
+/* ============ START TEST ============ */
+function startSetTest(setNum){
+  testState = { setNum: setNum, current: 0, answers: new Array(30).fill(null), timeLeft: TEST_DURATION, submitted: false };
+  document.getElementById('satSetSelector').style.display = 'none';
+  document.getElementById('satResultScreen').style.display = 'none';
+  document.getElementById('satResultScreen').innerHTML = '';
+  document.getElementById('satTestScreen').style.display = 'block';
+  document.getElementById('testSetName').textContent = SAT_SETS[setNum].name;
+  renderNavGrid();
+  renderTestQuestion();
+  startTestTimer();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function startTestTimer(){
+  if(testTimerInterval) clearInterval(testTimerInterval);
+  updateTimerDisplay();
+  testTimerInterval = setInterval(function(){
+    if(!testState || testState.submitted) return;
+    testState.timeLeft--;
+    updateTimerDisplay();
+    if(testState.timeLeft <= 0){ clearInterval(testTimerInterval); testTimerInterval = null; submitTest(true); }
+  }, 1000);
+}
+
+function updateTimerDisplay(){
+  if(!testState) return;
+  const el = document.getElementById('testTimer');
+  const t = Math.max(0, testState.timeLeft);
+  const m = String(Math.floor(t/60)).padStart(2,'0');
+  const s = String(t%60).padStart(2,'0');
+  el.textContent = m+':'+s;
+  el.classList.remove('warning','danger');
+  if(t <= 60) el.classList.add('danger');
+  else if(t <= 300) el.classList.add('warning');
+}
+
+function renderNavGrid(){
+  const grid = document.getElementById('navGrid');
+  grid.innerHTML = '';
+  for(let i=0;i<30;i++){
+    const b = document.createElement('button');
+    b.className = 'nav-cell';
+    b.textContent = i+1;
+    b.onclick = (function(idx){ return function(){ testState.current = idx; renderTestQuestion(); renderNavGrid(); }; })(i);
+    grid.appendChild(b);
+  }
+  updateNavStatus();
+}
+
+function updateNavStatus(){
+  if(!testState) return;
+  document.querySelectorAll('#navGrid .nav-cell').forEach(function(c,i){
+    c.classList.toggle('answered', testState.answers[i] !== null);
+    c.classList.toggle('current', i === testState.current);
+  });
+  const answered = testState.answers.filter(function(a){ return a !== null; }).length;
+  document.getElementById('testProgress').textContent = 'Câu '+(testState.current+1)+' / 30 · Đã trả lời '+answered+'/30';
+}
+
+function renderTestQuestion(){
+  if(!testState) return;
+  const item = SAT_SETS[testState.setNum].questions[testState.current];
+  document.getElementById('testQNum').textContent = testState.current+1;
+  document.getElementById('testQText').innerHTML = item.q;
+  const optsC = document.getElementById('testOptions');
+  optsC.innerHTML = '';
+  item.opts.forEach(function(o,i){
+    const b = document.createElement('button');
+    b.className = 'option';
+    if(testState.answers[testState.current] === i) b.classList.add('selected');
+    b.innerHTML = '<span class="letter">'+letterMap[i]+'</span><span class="opt-text">'+o+'</span>';
+    b.onclick = function(){ selectTestOption(i); };
+    optsC.appendChild(b);
+  });
+  document.getElementById('testQuestionCard').classList.remove('correct','wrong');
+  document.getElementById('btnPrev').disabled = testState.current === 0;
+  document.getElementById('btnNext').textContent = testState.current === 29 ? '📝 Nộp bài' : 'Câu tiếp →';
+  if(window.renderMathInElement){ renderMathInElement(document.getElementById('testQuestionCard'), {delimiters:[{left:'\\(',right:'\\)',display:false}]}); }
+  updateNavStatus();
+}
+
+function selectTestOption(optIdx){
+  if(!testState || testState.submitted) return;
+  testState.answers[testState.current] = optIdx;
+  document.querySelectorAll('#testOptions .option').forEach(function(o,i){ o.classList.toggle('selected', i === optIdx); });
+  updateNavStatus();
+}
+
+function goToQuestion(i){ if(!testState || i<0 || i>29) return; testState.current = i; renderTestQuestion(); }
+
+/* ============ BUTTON WIRING ============ */
+document.getElementById('btnPrev').onclick = function(){ if(testState) goToQuestion(testState.current - 1); };
+document.getElementById('btnNext').onclick = function(){
+  if(!testState) return;
+  if(testState.current === 29) submitTest(false);
+  else goToQuestion(testState.current + 1);
+};
+document.getElementById('btnQuitTest').onclick = function(){
+  let ok = true;
+  try { ok = window.confirm('Bạn có chắc muốn thoát? Bài làm sẽ không được lưu.'); } catch(e){ ok = true; }
+  if(ok === false) return;
+  if(testTimerInterval){ clearInterval(testTimerInterval); testTimerInterval = null; }
+  testState = null;
+  document.getElementById('satTestScreen').style.display = 'none';
+  document.getElementById('satSetSelector').style.display = 'grid';
+};
+document.getElementById('btnSubmitTest').onclick = function(){ submitTest(false); };
+document.getElementById('btnForceResult').onclick = function(){
+  if(!testState || testState.submitted) return;
+  submitTest(true);
+};
+
+/* ============ SUBMIT TEST ============ */
+function submitTest(auto){
+  if(!testState || testState.submitted) return;
+  if(!auto){
+    const unanswered = testState.answers.filter(function(a){ return a === null; }).length;
+    if(unanswered > 0){
+      let ok = true;
+      try { ok = window.confirm('Bạn còn ' + unanswered + ' câu chưa trả lời. Vẫn nộp bài?'); } catch(e){ ok = true; }
+      if(ok === false) return;
+    }
+  }
+  testState.submitted = true;
+  if(testTimerInterval){ clearInterval(testTimerInterval); testTimerInterval = null; }
+  try {
+    const questions = SAT_SETS[testState.setNum].questions;
+    let correct = 0;
+    testState.answers.forEach(function(ans,i){ if(ans === questions[i].ans) correct++; });
+    const timeUsed = TEST_DURATION - testState.timeLeft;
+    currentScoreId = Date.now().toString();
+    saveScoreToLocalStorage({ id: currentScoreId, setNum: testState.setNum, correct: correct, total: questions.length, pct: Math.round(correct / questions.length * 100), timeUsed: timeUsed });
+  } catch(e){ console.error('Lỗi lưu điểm:', e); }
+  document.getElementById('satTestScreen').style.display = 'none';
+  try { renderResult(); } catch(e){ console.error('Lỗi render kết quả:', e); showBasicResult(e); }
+  const rs = document.getElementById('satResultScreen');
+  if(rs){ rs.style.display = 'block'; if(!rs.innerHTML || rs.innerHTML.trim() === ''){ showBasicResult(new Error('Empty content')); } }
+  try { window.scrollTo({top:0,behavior:'smooth'}); } catch(e){ window.scrollTo(0,0); }
+  try { playFanfare(); } catch(e){}
+}
+
+function showBasicResult(err){
+  const c = document.getElementById('satResultScreen');
+  if(!c) return;
+  const questions = (testState && SAT_SETS[testState.setNum]) ? SAT_SETS[testState.setNum].questions : [];
+  let correct = 0;
+  if(testState && questions.length){ testState.answers.forEach(function(ans,i){ if(ans === questions[i].ans) correct++; }); }
+  const total = questions.length || 30;
+  const pct = Math.round(correct / total * 100);
+  c.innerHTML =
+    '<div class="card" style="border-left:6px solid #4CAF50"><h3>✅ Đã hoàn thành bài thi</h3><div style="display:flex;gap:24px;align-items:center;margin:20px 0;flex-wrap:wrap"><div style="background:#EAF0F9;padding:20px 32px;border-radius:12px;text-align:center"><div style="font-size:42px;font-weight:800;color:#1B3A6B">' + correct + '</div><div style="font-size:14px;color:#5b6778">/ ' + total + ' câu đúng</div></div><div style="background:linear-gradient(135deg,#1B3A6B,#2C5AA0);padding:20px 32px;border-radius:12px;text-align:center;color:#fff"><div style="font-size:42px;font-weight:800;color:#F5B400">' + pct + '%</div><div style="font-size:14px;opacity:.9">chính xác</div></div></div><p style="color:#E53935;font-size:13px;margin-top:10px">⚠ Chi tiết phân tích không hiển thị: ' + (err && err.message ? err.message : 'Lỗi không xác định') + '</p><div style="margin-top:16px;display:flex;gap:12px;flex-wrap:wrap"><button class="btn btn-primary" onclick="backToSetSelector()">📚 Chọn bộ khác</button><button class="btn btn-outline" onclick="switchTab(\'knowledge\')">📖 Ôn lý thuyết</button><button class="btn btn-outline" onclick="switchTab(\'practice\')">✏️ Luyện tập</button></div></div>';
+  c.style.display = 'block';
+}
+
+/* ============ RENDER RESULT CHI TIẾT ============ */
+function renderResult(){
+  const c = document.getElementById('satResultScreen');
+  if(!c) return;
+  c.style.display = 'block';
+  const setNum = testState.setNum;
+  const questions = SAT_SETS[setNum].questions;
+  const autoSubmitted = testState.timeLeft <= 0;
+  let correct = 0, wrong = 0, unanswered = 0;
+  const topicStat = {};
+  Object.keys(TOPICS).forEach(function(k){ topicStat[k] = { correct: 0, total: 0 }; });
+  const wrongList = [];
+  questions.forEach(function(item,i){
+    const ans = testState.answers[i];
+    topicStat[item.topic].total++;
+    if(ans === null){ unanswered++; wrongList.push({ idx: i, item: item, yourAns: null }); }
+    else if(ans === item.ans){ correct++; topicStat[item.topic].correct++; }
+    else { wrong++; wrongList.push({ idx: i, item: item, yourAns: ans }); }
+  });
+  const total = questions.length;
+  const pct = Math.round(correct / total * 100);
+  const estimatedSAT = Math.min(800, Math.max(200, Math.round(200 + (correct/total)*600)));
+  const timeUsed = TEST_DURATION - testState.timeLeft;
+  const tm = String(Math.floor(timeUsed/60)).padStart(2,'0');
+  const ts = String(timeUsed%60).padStart(2,'0');
+  const answered = correct + wrong;
+  const avgTime = answered > 0 ? Math.round(timeUsed/answered) : 0;
+  const avgTimeStr = Math.floor(avgTime/60) + ':' + String(avgTime%60).padStart(2,'0');
+  let level, levelColor, levelIcon, levelDesc, levelAdvice;
+  if(pct >= 90){ level="XUẤT SẮC"; levelColor="#4CAF50"; levelIcon="🏆"; levelDesc="Kiến thức phương trình đường – mặt – cầu rất vững vàng!"; levelAdvice="Luyện đề khó hơn để duy trì phong độ."; }
+  else if(pct >= 75){ level="TỐT"; levelColor="#2C5AA0"; levelIcon="⭐"; levelDesc="Nắm tốt kiến thức cơ bản và nâng cao."; levelAdvice="Khắc phục chủ đề dưới 80% để đạt 700+."; }
+  else if(pct >= 60){ level="KHÁ"; levelColor="#E8A317"; levelIcon="📈"; levelDesc="Nền tảng khá nhưng còn sai sót."; levelAdvice="Luyện thêm dạng tổng hợp và ứng dụng."; }
+  else if(pct >= 40){ level="TRUNG BÌNH"; levelColor="#FF9800"; levelIcon="📚"; levelDesc="Cần củng cố lý thuyết."; levelAdvice="Ôn kỹ mục I, II, III và làm lại Nhóm 1."; }
+  else { level="CẦN CỐ GẮNG"; levelColor="#E53935"; levelIcon="🔧"; levelDesc="Cần xây dựng lại nền tảng."; levelAdvice="Đọc kỹ Kiến thức, ghi nhớ công thức phương trình đường – mặt – cầu."; }
+  let timeEval, timeIcon, timeColor;
+  if(timeUsed <= TEST_DURATION*0.7){ timeEval="Quản lý thời gian xuất sắc"; timeIcon="🚀"; timeColor="#4CAF50"; }
+  else if(timeUsed <= TEST_DURATION*0.9){ timeEval="Quản lý thời gian tốt"; timeIcon="⏱️"; timeColor="#2C5AA0"; }
+  else if(timeUsed < TEST_DURATION){ timeEval="Sát giờ — cần tăng tốc"; timeIcon="⏰"; timeColor="#E8A317"; }
+  else { timeEval="Hết giờ"; timeIcon="🚨"; timeColor="#E53935"; }
+  const topicList = Object.keys(topicStat).filter(function(k){ return topicStat[k].total > 0; }).map(function(k){ return { key: k, name: TOPICS[k], correct: topicStat[k].correct, total: topicStat[k].total, pct: Math.round(topicStat[k].correct/topicStat[k].total*100) }; }).sort(function(a,b){ return a.pct - b.pct; });
+  const weakTopics = topicList.filter(function(t){ return t.pct < 60; });
+  const mediumTopics = topicList.filter(function(t){ return t.pct >= 60 && t.pct < 80; });
+  const strongTopics = topicList.filter(function(t){ return t.pct >= 80; });
+  let roadmapHTML = '';
+  if(weakTopics.length > 0){
+    roadmapHTML += '<div class="roadmap-phase phase-1"><div class="phase-num">1</div><div class="phase-content"><h4>Giai đoạn 1: Củng cố kiến thức nền tảng <span class="phase-time">⏳ 1–3 ngày</span></h4><ul>';
+    weakTopics.forEach(function(t){ roadmapHTML += '<li><strong>' + t.name + '</strong> (' + t.correct + '/' + t.total + ' = ' + t.pct + '%) — ' + TOPIC_RECOMMENDATIONS[t.key] + '</li>'; });
+    roadmapHTML += '</ul><div class="phase-actions"><button class="btn btn-outline btn-sm" onclick="switchTab(\'knowledge\')">📖 Ôn lý thuyết</button><button class="btn btn-outline btn-sm" onclick="switchTab(\'practice\')">✏️ Luyện nhóm cơ bản</button></div></div></div>';
+  }
+  if(mediumTopics.length > 0){
+    roadmapHTML += '<div class="roadmap-phase phase-2"><div class="phase-num">2</div><div class="phase-content"><h4>Giai đoạn 2: Luyện tập nâng cao <span class="phase-time">⏳ 3–5 ngày</span></h4><ul>';
+    mediumTopics.forEach(function(t){ roadmapHTML += '<li><strong>' + t.name + '</strong> (' + t.correct + '/' + t.total + ' = ' + t.pct + '%) — Cần thêm bài tập trung bình–khó.</li>'; });
+    roadmapHTML += '</ul><div class="phase-actions"><button class="btn btn-outline btn-sm" onclick="switchTab(\'practice\')">✏️ Luyện nhóm trung bình</button><button class="btn btn-primary btn-sm" onclick="restartSameSet()">🔄 Làm lại bộ đề này</button></div></div></div>';
+  }
+  roadmapHTML += '<div class="roadmap-phase phase-3"><div class="phase-num">3</div><div class="phase-content"><h4>Giai đoạn 3: ' + (strongTopics.length > 0 ? 'Duy trì & mở rộng' : 'Luyện đề tổng hợp') + ' <span class="phase-time">⏳ Liên tục</span></h4><ul>';
+  if(strongTopics.length > 0){ strongTopics.forEach(function(t){ roadmapHTML += '<li><strong>' + t.name + '</strong> (' + t.correct + '/' + t.total + ' = ' + t.pct + '%) — Duy trì phong độ.</li>'; }); }
+  else { roadmapHTML += '<li>Luyện các bộ đề khác để đa dạng dạng bài.</li>'; }
+  roadmapHTML += '</ul><div class="phase-actions"><button class="btn btn-outline btn-sm" onclick="backToSetSelector()">📚 Chọn bộ khác</button><button class="btn btn-outline btn-sm" onclick="switchTab(\'sat\')">⏱️ Luyện đề khác</button></div></div></div>';
+  let topicTableHTML = '';
+  topicList.forEach(function(t){
+    let cls = '', status = '', statusColor = '';
+    if(t.pct >= 80){ status = '✅ Vững'; statusColor = '#4CAF50'; }
+    else if(t.pct >= 60){ cls = 'warn'; status = '⚠ Cần luyện'; statusColor = '#E8A317'; }
+    else { cls = 'bad'; status = '🔴 Yếu'; statusColor = '#E53935'; }
+    topicTableHTML += '<tr><td><strong>' + t.name + '</strong></td><td><div class="topic-bar-cell"><div class="topic-bar"><div class="topic-bar-fill ' + cls + '" style="width:' + t.pct + '%"></div></div><span style="min-width:44px;font-weight:700;color:#5b6778">' + t.pct + '%</span></div></td><td style="text-align:right"><span class="topic-score">' + t.correct + '/' + t.total + '</span></td><td style="text-align:center"><strong style="color:' + statusColor + ';font-size:13px">' + status + '</strong></td></tr>';
+    topicTableHTML += '<tr><td colspan="4" style="padding:0 16px 12px;border-bottom:1px solid #eef2f8"><div class="topic-recommend">📌 <strong>Gợi ý:</strong> ' + TOPIC_RECOMMENDATIONS[t.key] + '</div></td></tr>';
+  });
+  let wrongHTML = '';
+  if(wrongList.length > 0){
+    wrongHTML += '<div class="result-section-title"><span class="icon" style="background:#fdeaea;color:#E53935">🔍</span> Phân tích ' + wrongList.length + ' câu sai / bỏ trống</div>';
+    wrongList.forEach(function(w){
+      const item = w.item;
+      const cls = w.yourAns === null ? 'unanswered' : '';
+      const yourText = w.yourAns === null ? '— Không trả lời —' : item.opts[w.yourAns];
+      wrongHTML += '<div class="wrong-item ' + cls + '"><div class="wrong-head"><div class="wrong-num">' + (w.idx+1) + '</div><div class="wrong-q">' + item.q + '<div><span class="topic-tag">' + TOPICS[item.topic] + '</span></div></div></div><div class="ans-row"><div class="ans-box your"><div class="lbl">Bạn chọn</div><div class="val">' + (w.yourAns === null ? '—' : letterMap[w.yourAns] + '. ') + yourText + '</div></div><div class="ans-box correct"><div class="lbl">Đáp án đúng</div><div class="val">' + letterMap[item.ans] + '. ' + item.opts[item.ans] + '</div></div></div><div class="exp-box"><div class="lbl">🧮 Lời giải</div>' + item.exp + '</div><div class="review-box">📖 ' + item.review + '</div></div>';
+    });
+  } else {
+    wrongHTML = '<div class="roadmap" style="border-left-color:#4CAF50"><h3>🎯 Tất cả câu trả lời đều chính xác!</h3><p style="font-size:14px;color:#5b6778">Không có câu nào sai. Em đã sẵn sàng cho các bộ đề khó hơn!</p></div>';
+  }
+  c.innerHTML =
+    '<div class="result-hero"><div><h2>🎉 Hoàn thành ' + SAT_SETS[setNum].name + '!</h2><p>Bạn đã làm ' + total + ' câu trong ' + tm + ':' + ts + '. ' + (autoSubmitted ? '⏰ Hết giờ! ' : '') + (unanswered > 0 ? 'Còn ' + unanswered + ' câu chưa trả lời.' : '') + '</p></div><div class="result-score"><div class="num">' + correct + '</div><div class="den">/ ' + total + ' câu đúng</div><div class="pct">' + pct + '%</div></div></div>' +
+    '<div class="level-banner" style="border-left-color:' + levelColor + '"><div class="level-icon" style="background:' + levelColor + '">' + levelIcon + '</div><div class="level-content"><h3 style="color:' + levelColor + '">Đánh giá: ' + level + '</h3><p>' + levelDesc + '</p><div class="level-advice"><strong>💡 Định hướng:</strong> ' + levelAdvice + '</div></div></div>' +
+    '<div class="result-stats"><div class="stat-box green"><div class="label">✅ Đúng</div><div class="value">' + correct + '</div><div class="sub">Chiếm ' + pct + '%</div></div><div class="stat-box red"><div class="label">❌ Sai</div><div class="value">' + wrong + '</div><div class="sub">Cần xem lại</div></div><div class="stat-box yellow"><div class="label">⚠ Bỏ trống</div><div class="value">' + unanswered + '</div><div class="sub">Chưa trả lời</div></div><div class="stat-box"><div class="label">🎯 SAT ước lượng</div><div class="value">' + estimatedSAT + '</div><div class="sub">/ 800</div></div></div>' +
+    getLeaderboardHTML() +
+    '<div class="result-section-title"><span class="icon">⏱</span> Phân tích thời gian</div><div class="time-analysis"><div class="time-block"><div class="tb-icon">⏰</div><div class="tb-content"><div class="tb-label">Tổng thời gian</div><div class="tb-value">' + tm + ':' + ts + '</div><div class="tb-desc">/ 45:00</div></div></div><div class="time-block"><div class="tb-icon">⚡</div><div class="tb-content"><div class="tb-label">Trung bình / câu</div><div class="tb-value">' + avgTimeStr + '</div><div class="tb-desc">Mục tiêu: ≤ 1:30</div></div></div><div class="time-block"><div class="tb-icon" style="background:' + timeColor + '22;color:' + timeColor + '">' + timeIcon + '</div><div class="tb-content"><div class="tb-label">Đánh giá</div><div class="tb-value" style="color:' + timeColor + ';font-size:15px">' + timeEval + '</div><div class="tb-desc">' + (timeUsed < TEST_DURATION ? 'Còn dư ' + Math.floor((TEST_DURATION-timeUsed)/60) + ':' + String((TEST_DURATION-timeUsed)%60).padStart(2,'0') : 'Đã dùng hết') + '</div></div></div></div>' +
+    '<div class="result-section-title"><span class="icon">📊</span> Phân tích theo chủ đề</div><table class="topic-table"><thead><tr><th style="width:28%">Chủ đề</th><th style="width:38%">Tỉ lệ đúng</th><th style="width:14%;text-align:right">Số câu</th><th style="width:20%;text-align:center">Trạng thái</th></tr></thead><tbody>' + topicTableHTML + '</tbody></table>' +
+    '<div class="roadmap"><h3>🗺️ Lộ trình ôn tập cá nhân hóa</h3><p class="roadmap-sub">Dựa trên kết quả của em, đây là lộ trình được thiết kế riêng:</p>' + roadmapHTML + '</div>' +
+    wrongHTML +
+    '<div class="result-actions"><button class="btn btn-primary" onclick="restartSameSet()">🔄 Làm lại ' + SAT_SETS[setNum].name + '</button><button class="btn btn-outline" onclick="backToSetSelector()">📚 Chọn bộ khác</button><button class="btn btn-outline" onclick="switchTab(\'knowledge\')">📖 Ôn lý thuyết</button><button class="btn btn-outline" onclick="switchTab(\'practice\')">✏️ Luyện tập thêm</button></div>';
+  if(window.renderMathInElement){ renderMathInElement(c, {delimiters:[{left:'\\(',right:'\\)',display:false}]}); }
+}
+
+function restartSameSet(){
+  if(!testState) return;
+  const setNum = testState.setNum;
+  document.getElementById('satResultScreen').style.display = 'none';
+  document.getElementById('satResultScreen').innerHTML = '';
+  startSetTest(setNum);
+}
+
+function backToSetSelector(){
+  document.getElementById('satResultScreen').style.display = 'none';
+  document.getElementById('satResultScreen').innerHTML = '';
+  document.getElementById('satTestScreen').style.display = 'none';
+  document.getElementById('satSetSelector').style.display = 'grid';
+  testState = null;
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+/* ============ INIT ============ */
+renderSatSetSelector();
+
+window.addEventListener('load', function(){
+  if(window.renderMathInElement){
+    renderMathInElement(document.body, {delimiters:[{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}]});
+  }
+});
+
+console.log('[SAT Lines-Planes-Spheres] ✅ Đã load. Hàm renderResult:', typeof renderResult, '| submitTest:', typeof submitTest);
+</script>
+</body>
+</html>
